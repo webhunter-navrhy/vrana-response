@@ -63,7 +63,7 @@ h1, h2 {
   font-family: var(--f-dis);
   font-weight: 800;
   text-transform: uppercase;
-  line-height: .9;
+  line-height: 1.04;
   letter-spacing: -.005em;
 }
 h1 { font-size: var(--h1); }
@@ -224,7 +224,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 }
 .balicek-dop { position: absolute; right: 14px; top: 14px; background: var(--modra); color: var(--bila); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .5em .85em; border-radius: 6px; }
 .balicek-telo { padding: clamp(20px, 2vw, 30px); display: flex; flex-direction: column; gap: .8rem; flex: 1; }
-.balicek-telo h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.9rem, 1.5rem + 1vw, 2.5rem); line-height: .95; letter-spacing: 0; }
+.balicek-telo h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.9rem, 1.5rem + 1vw, 2.5rem); line-height: 1.06; letter-spacing: 0; }
 .balicek-delka { font-weight: 600; color: var(--nebe); font-size: .95rem; }
 .balicek-hlavni .balicek-delka { color: var(--modra-t); }
 .balicek-telo > p:not(.balicek-delka) { color: var(--text-sv); }
@@ -283,7 +283,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .planovac[data-rezim="12"] .okruh { cursor: default; }
 
 .plan-pata { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; margin-top: clamp(16px, 2vw, 28px); padding-top: clamp(16px, 2vw, 24px); border-top: 1px solid var(--linka-tm); }
-.plan-souhrn { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.4rem, 1.2rem + .8vw, 2rem); line-height: 1.05; }
+.plan-souhrn { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.4rem, 1.2rem + .8vw, 2rem); line-height: 1.12; }
 .plan-souhrn em { font-style: normal; color: var(--modra); }
 
 .okruhy-detail { margin-top: clamp(24px, 3vw, 40px); border-top: 1.5px solid var(--navy); }
@@ -306,7 +306,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .zalozky-obsah { display: grid; grid-template-columns: .8fr 1.4fr; gap: clamp(20px, 3vw, 48px); align-items: start; background: var(--navy); border-radius: var(--r-xl); padding: clamp(14px, 1.6vw, 20px); }
 .prokoho-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: calc(var(--r-xl) - 8px); position: sticky; top: 100px; }
 .panel { padding: clamp(8px, 2vw, 28px) clamp(4px, 1.5vw, 20px) clamp(8px, 2vw, 28px) 0; }
-.panel h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(2rem, 1.6rem + 1.4vw, 3rem); line-height: .95; margin-bottom: 1rem; letter-spacing: 0; }
+.panel h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(2rem, 1.6rem + 1.4vw, 3rem); line-height: 1.06; margin-bottom: 1rem; letter-spacing: 0; }
 .panel-uvod { color: var(--text-sv); margin-bottom: 1.4rem; max-width: 60ch; }
 .panel-skupina { margin-bottom: 1.4rem; }
 .panel-skupina h4 { color: var(--limetka); font-size: .82rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: .7rem; }
@@ -429,7 +429,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .paticka-menu { display: grid; gap: .45rem; font-size: .96rem; }
 .paticka-menu a { text-decoration: none; color: var(--text-sv); }
 .paticka-menu a:hover { color: var(--limetka); }
-.paticka-heslo { font-family: var(--f-dis); font-weight: 800; font-size: clamp(4rem, 1rem + 13vw, 15.5rem); line-height: .84; letter-spacing: -.01em; color: var(--panel); margin-bottom: clamp(28px, 4vw, 48px); }
+.paticka-heslo { font-family: var(--f-dis); font-weight: 800; font-size: clamp(4rem, 1rem + 13vw, 15.5rem); line-height: .96; letter-spacing: -.01em; color: var(--panel); margin-bottom: clamp(28px, 4vw, 48px); }
 .paticka-heslo span { color: var(--limetka); }
 .paticka-spodek { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; font-size: .85rem; color: rgba(230, 238, 251, .55); border-top: 1px solid var(--linka-sv); padding-top: 18px; }
 
