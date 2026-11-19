@@ -1,0 +1,70 @@
+{
+  "url": "http://localhost:8765/vrana-response/",
+  "ok": true,
+  "chyby": [],
+  "varovani": [
+    "Web má noindex (u ostrého webu pravděpodobně chyba)",
+    "Dotykové cíle <40 px na mobilu: 16× (např. a.odkaz \"Poptat teambuilding\" 155×26; input \"\" 1×1; input \"\" 1×1; input \"\" 1×1)"
+  ],
+  "metriky": {
+    "sirky": {
+      "1440": {
+        "scrollWidth": 1440,
+        "pocet_pretekajicich": 0
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "pocet_pretekajicich": 0
+      },
+      "1024": {
+        "scrollWidth": 1024,
+        "pocet_pretekajicich": 0
+      },
+      "820": {
+        "scrollWidth": 820,
+        "pocet_pretekajicich": 0
+      },
+      "390": {
+        "scrollWidth": 390,
+        "pocet_pretekajicich": 0
+      },
+      "360": {
+        "scrollWidth": 360,
+        "pocet_pretekajicich": 0
+      }
+    },
+    "preneseno_PC_MB": 1.03,
+    "nejvetsi_obrazek_PC": {
+      "kB": 161,
+      "url": "http://localhost:8765/vrana-response/img/skupina-nacvik-1280.webp"
+    },
+    "snimku_PC": 15,
+    "preneseno_mobil_MB": 1.18,
+    "nejvetsi_obrazek_mobil": {
+      "kB": 187,
+      "url": "http://localhost:8765/vrana-response/img/venku-nacvik-1280.webp"
+    },
+    "snimku_mobil": 22,
+    "seo": {
+      "title": "Vrána Response – bezpečnostní workshopy pro firmy, školy a úřady",
+      "description": "Bezpečnostní workshopy a roční programy pro firmy, školy a úřady. Daniel Vrána, 12 let u státních be",
+      "lang": "cs",
+      "h1": 1,
+      "jsonld": [
+        true
+      ],
+      "robots": "noindex, nofollow",
+      "og_image": "https://webhunter-navrhy.github.io/vrana-response/og.jpg",
+      "bez_v": [],
+      "canonical": true,
+      "viewport": true
+    },
+    "maly_dotykovy_cil": 16,
+    "font_nadpis": "Big Shoulders Display",
+    "font_text": "Schibsted Grotesk",
+    "podstranky": {
+      "stranek": 1,
+      "obrazku": 32
+    }
+  }
+}

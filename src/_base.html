@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ titulek or site.nazev }}</title>
+<meta name="description" content="{{ popis or site.popis }}">
+{% if site.navrh or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta name="theme-color" content="{{ site.theme_color }}">
+<link rel="canonical" href="{{ site.url }}{{ cesta or '' }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{ 'cs_CZ' if site.lang == 'cs' else ('sk_SK' if site.lang == 'sk' else site.lang) }}">
+<meta property="og:title" content="{{ titulek or site.nazev }}">
+<meta property="og:description" content="{{ popis or site.popis }}">
+<meta property="og:url" content="{{ site.url }}{{ cesta or '' }}">
+{% if og_url %}<meta property="og:image" content="{{ og_url }}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">{% endif %}
+<link rel="preload" href="{{ base }}fonts/bigshoulders-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base }}fonts/bigshoulders-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="icon" href="{{ base }}img/orlice-navy.svg" type="image/svg+xml">
+{% block head %}{% endblock %}
+{% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+<header class="hlavicka">
+  <div class="hlavicka-pruh">
+    <a href="{{ url('') }}" class="logo" aria-label="{{ site.nazev }} – úvod"><img src="{{ base }}{{ site.logo }}" alt="{{ site.nazev }}" width="56" height="46"></a>
+    <nav class="menu" id="menu" aria-label="Hlavní">
+      {% for n in site.nav %}<a href="{{ n.href }}">{{ n.text }}</a>{% endfor %}
+    </nav>
+    <a class="tl tl-mini" href="#poptavka"><span>Poptat kurz</span><i aria-hidden="true"></i></a>
+    <button class="menu-tl" aria-expanded="false" aria-controls="menu"><span></span><span></span><span class="sr">Menu</span></button>
+  </div>
+</header>
+<main id="obsah">
+{% block obsah %}{% endblock %}
+</main>
+<footer class="paticka">
+  <div class="wrap">
+    <div class="paticka-horni">
+      <img src="{{ base }}img/orlice.svg" alt="" width="160" height="74" class="paticka-orlice">
+      <div class="paticka-kontakt">
+        <p class="stitek">Zajímají Vás detaily a možnosti?</p>
+        <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a></p>
+        <p><a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
+      </div>
+      <nav class="paticka-menu" aria-label="Patička">
+        {% for n in site.nav %}<a href="{{ n.href }}">{{ n.text }}</a>{% endfor %}
+        <a href="https://www.gryfix.cz" rel="noopener">Gryfix Experience ↗</a>
+      </nav>
+    </div>
+    <p class="paticka-heslo" aria-label="Be ready. Be safe.">BE READY.<br><span>BE SAFE.</span></p>
+    <div class="paticka-spodek">
+      <p>© {{ site.rok if site.rok is defined else 2026 }} {{ site.nazev }} · Bc. Daniel Vrána{% if site.ico %} · IČO {{ site.ico }}{% endif %}</p>
+      <p>Fotografie jsou ilustrační.</p>
+    </div>
+  </div>
+</footer>
+<script src="{{ asset('js/main.js') }}" defer></script>
+</body>
+</html>

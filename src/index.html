@@ -1,0 +1,299 @@
+{% extends "_base.html" %}
+{% set titulek = "Vrána Response – bezpečnostní workshopy pro firmy, školy a úřady" %}
+{% block obsah %}
+
+{# 1 ÚVOD #}
+<section class="uvod">
+  <div class="wrap uvod-mrizka">
+    <div class="uvod-text">
+      <p class="stitek">Bezpečnostní edukace pro firmy, školy a úřady</p>
+      <h1>První minuty krizové situace<span class="tecka">.</span></h1>
+      <p class="perex">Vaši lidé si v modelových situacích vyzkouší, jak včas rozpoznat riziko, rozhodnout se pod tlakem a&nbsp;spolupracovat. Dovednosti využijí v práci i mimo ni.</p>
+      <div class="tlacitka">
+        <a class="tl" href="#kurzy"><span>Vybrat kurz</span><i aria-hidden="true"></i></a>
+        <a class="tl tl-obrys" href="#rocni-program"><span>Sestavit roční plán</span><i aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <figure class="uvod-foto">
+      {{ img('skupina-nacvik.jpg', 'Skupina zaměstnanců při nácviku krizové situace', '(min-width: 980px) 52vw, 100vw', eager=True) }}
+      <img class="uvod-sipka" src="{{ base }}img/sipka-limetka.webp" alt="" width="509" height="600">
+      <figcaption class="uvod-karta">
+        <img src="{{ base }}img/orlice.svg" alt="" width="72" height="33">
+        <p><b>Roční program</b> · <b>Jednorázový workshop</b> · <b>Zážitkový teambuilding</b></p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+{# 2 BENEFIT #}
+<section class="benefit" id="benefit">
+  <div class="wrap">
+    <div class="benefit-mrizka">
+      <div>
+        <p class="stitek">Zaměstnanecký benefit roku 2027</p>
+        <h2>Bezpečnost jako nový benefit<span class="tecka">.</span></h2>
+      </div>
+      <div class="benefit-text">
+        <p>Edukace v bezpečnosti je benefit, který zvyšuje pocit bezpečnosti zaměstnanců na pracovišti i&nbsp;mimo něj, zvyšuje jejich sebevědomí, připravenost i&nbsp;schopnost správně reagovat a&nbsp;vyhodnocovat situace.</p>
+        <p>Bezpečnostní workshopy zvyšují konkurenceschopnost firem z&nbsp;pohledu zaměstnavatele a&nbsp;zlepšují image firmy právě díky smysluplné péči o&nbsp;zaměstnance.</p>
+      </div>
+    </div>
+    <div class="pruh">
+      <div class="pruh-cislo"><b>12</b><span>let praxe u&nbsp;státních bezpečnostních složek</span></div>
+      <div class="pruh-cislo"><b>12</b><span>okruhů bezpečnosti v&nbsp;ročním programu</span></div>
+      <figure class="pruh-foto">{{ img('workshop-tabule.jpg', 'Výklad u tabule během workshopu', '(min-width: 980px) 30vw, 100vw') }}</figure>
+    </div>
+  </div>
+</section>
+
+{# 3 CO SI TÝM VYZKOUŠÍ #}
+<section class="tym">
+  <div class="wrap tym-mrizka">
+    <figure class="tym-foto">
+      {{ img('venku-nacvik.jpg', 'Nácvik reakce v terénu', '(min-width: 980px) 44vw, 100vw') }}
+      <img class="tym-kridlo" src="{{ base }}img/kridlo.webp" alt="" width="600" height="295">
+    </figure>
+    <div class="tym-text">
+      <p class="stitek">Získejte klíčové dovednosti formou zážitku</p>
+      <h2>Co si tým vyzkouší?</h2>
+      <ol class="ukoly">
+        <li><span class="ukol-c">01</span><div><h3>Včas rozpoznat riziko</h3><p>Všímat si okolí a&nbsp;varovného chování na pracovišti i&nbsp;ve veřejném prostoru.</p></div></li>
+        <li><span class="ukol-c">02</span><div><h3>Rozhodnout se pod tlakem</h3><p>Vyhodnotit dostupné informace a&nbsp;zvolit bezpečnou reakci na mimořádnou situaci.</p></div></li>
+        <li><span class="ukol-c">03</span><div><h3>Zklidnit napjatou situaci</h3><p>Nacvičit deeskalační komunikaci a&nbsp;rozdělení rolí v&nbsp;týmu.</p></div></li>
+        <li><span class="ukol-c">04</span><div><h3>Poskytnout a přivolat pomoc</h3><p>Procvičit základy první pomoci a&nbsp;předávání informací IZS.</p></div></li>
+      </ol>
+      <p class="pozn">Program lze zařadit mezi zaměstnanecké benefity. Školíme ve vašich kancelářích, na pobočkách nebo v&nbsp;prostoru připraveném pro teambuilding.</p>
+    </div>
+  </div>
+</section>
+
+{# 4 JEDNORÁZOVÉ KURZY #}
+<section class="kurzy" id="kurzy">
+  <div class="wrap">
+    <div class="hlava-sekce">
+      <div>
+        <p class="stitek">Jednorázové kurzy</p>
+        <h2>Vyberte si balíček<span class="tecka">.</span></h2>
+      </div>
+      <p>Pro skupinu do 20&nbsp;osob, u&nbsp;vás na pracovišti. Při více skupinách sleva. Termín a&nbsp;konkrétní místo po vzájemné dohodě.</p>
+    </div>
+    <div class="balicky">
+      {% for b in data.balicky %}
+      <article class="balicek{% if b.doporuceno is defined and b.doporuceno %} balicek-hlavni{% endif %}">
+        <figure class="balicek-foto">
+          {{ img(b.foto, b.nazev, '(min-width: 980px) 31vw, (min-width: 700px) 50vw, 100vw') }}
+          <span class="balicek-kod">{{ b.kod }}</span>
+          {% if b.doporuceno is defined and b.doporuceno %}<span class="balicek-dop">Doporučujeme</span>{% endif %}
+        </figure>
+        <div class="balicek-telo">
+          <h3>{{ b.nazev }}</h3>
+          <p class="balicek-delka">{{ b.delka }} · do 20 osob</p>
+          <p>{{ b.popis }}</p>
+          <ul>{% for x in b.body %}<li>{{ x }}</li>{% endfor %}</ul>
+          <div class="balicek-pata">
+            <p class="cena">{{ b.cena|replace(' Kč', '&nbsp;Kč')|safe }}</p>
+            <a class="tl tl-mini" href="#poptavka" data-zajem="{{ b.kod }} · {{ b.nazev }}"><span>Poptat</span><i aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 5 ROČNÍ PROGRAM – signature #}
+<section class="rocni" id="rocni-program">
+  <div class="wrap">
+    <div class="hlava-sekce">
+      <div>
+        <p class="stitek">Roční program</p>
+        <h2>Bezpečnost po celý rok<span class="tecka">.</span></h2>
+      </div>
+      <p>Pravidelný kurz drží dovednosti v&nbsp;kondici. Vyberte tempo a&nbsp;sestavte si plán z&nbsp;12&nbsp;okruhů bezpečnosti. Výběr pak propíšeme do poptávky.</p>
+    </div>
+
+    <div class="planovac" data-planovac>
+      <div class="plan-ovladani">
+        <div class="prepinac" role="radiogroup" aria-label="Tempo ročního programu">
+          <button type="button" role="radio" aria-checked="true" data-rezim="12"><b>Každý měsíc</b><span>12 kurzů za rok</span></button>
+          <button type="button" role="radio" aria-checked="false" data-rezim="6"><b>Každý druhý měsíc</b><span>6 kurzů za rok</span></button>
+        </div>
+        <label class="plan-start">Začátek programu
+          <select data-start>
+            {% for m in ['leden','únor','březen','duben','květen','červen','červenec','srpen','září','říjen','listopad','prosinec'] %}<option value="{{ loop.index0 }}">{{ m }}</option>{% endfor %}
+          </select>
+        </label>
+      </div>
+
+      <div class="plan-telo">
+        <ol class="plan-mesice" data-mesice aria-live="polite"></ol>
+        <aside class="plan-okruhy">
+          <p class="plan-napoveda" data-napoveda>Každý měsíc jeden okruh, všech 12 za rok.</p>
+          <ul class="okruhy" data-okruhy>
+            {% for o in data.okruhy %}
+            <li><button type="button" class="okruh" data-c="{{ o.c }}" aria-pressed="true"><span class="okruh-c">{{ '%02d'|format(o.c) }}</span><span class="okruh-n">{{ o.nazev }}</span></button></li>
+            {% endfor %}
+          </ul>
+        </aside>
+      </div>
+
+      <div class="plan-pata">
+        <p class="plan-souhrn" data-souhrn>12 kurzů · 12 okruhů · cena na dotaz</p>
+        <a class="tl" href="#poptavka" data-poptat-plan><span>Poptat tento plán</span><i aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <details class="okruhy-detail">
+      <summary>Co obsahuje každý z&nbsp;12 okruhů</summary>
+      <ol>
+        {% for o in data.okruhy %}<li><b>{{ o.nazev }}</b><p>{{ o.popis }}</p></li>{% endfor %}
+      </ol>
+    </details>
+  </div>
+  <script type="application/json" id="okruhy-data">{{ data.okruhy|tojson }}</script>
+</section>
+
+{# 6 PRO KOHO #}
+<section class="prokoho" id="pro-koho">
+  <div class="wrap">
+    <div class="hlava-sekce">
+      <div>
+        <p class="stitek">Pro koho</p>
+        <h2>Program na míru vašemu provozu<span class="tecka">.</span></h2>
+      </div>
+      <p>Škola řeší jiné situace než hotelová recepce nebo noční směna. Vyberte typ instituce a&nbsp;podívejte se, co obvykle probíráme.</p>
+    </div>
+    <div class="zalozky" role="tablist" aria-label="Typ instituce">
+      {% for i in data.instituce %}<button type="button" role="tab" id="tab-{{ loop.index }}" aria-controls="panel-{{ loop.index }}" aria-selected="{{ 'true' if loop.first else 'false' }}" {% if not loop.first %}tabindex="-1"{% endif %}>{{ i.nazev }}</button>{% endfor %}
+    </div>
+    <div class="zalozky-obsah">
+      <figure class="prokoho-foto">{{ img('recepce.jpg', 'Recepce a zákaznické pracoviště', '(min-width: 980px) 34vw, 100vw') }}</figure>
+      {% for i in data.instituce %}
+      <div class="panel" role="tabpanel" id="panel-{{ loop.index }}" aria-labelledby="tab-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
+        <h3>{{ i.nazev }}</h3>
+        <p class="panel-uvod">{{ i.uvod }}</p>
+        {% for s in i.skupiny %}
+        <div class="panel-skupina">
+          {% if s.nadpis %}<h4>{{ s.nadpis }}</h4>{% endif %}
+          <ul>{% for x in s.body %}<li>{{ x }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+        {% for p in i.pozn %}<p class="panel-pozn">{{ p }}</p>{% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 7 JAK KURZ PROBÍHÁ #}
+<section class="prubeh" id="prubeh">
+  <div class="wrap prubeh-mrizka">
+    <div class="prubeh-text">
+      <p class="stitek">Jak kurz probíhá</p>
+      <h2>Krátce vysvětlit, pak si to vyzkoušet<span class="tecka">.</span></h2>
+      <p>Krátké vysvětlení, modelové situace, nácvik a&nbsp;společný rozbor. Malá skupina umožní zapojit každého.</p>
+      <ol class="kroky">
+        <li><b>01</b><span>Konfliktní návštěvník a&nbsp;narůstající agrese</span></li>
+        <li><b>02</b><span>Domluva a&nbsp;přivolání pomoci v&nbsp;malém týmu (kdo volá 158)</span></li>
+        <li><b>03</b><span>Reakce při násilném útoku (Utíkej – Schovej se – Bojuj)</span></li>
+        <li><b>04</b><span>Základy zastavení masivního krvácení</span></li>
+      </ol>
+      <p class="prubeh-zaver"><b>Závěr:</b> společné shrnutí a&nbsp;1–3 konkrétní doporučení pro další kroky.</p>
+    </div>
+    <div class="prubeh-strana">
+      <figure class="prubeh-foto">{{ img('krvaceni-sada.jpg', 'Sada pro zastavení masivního krvácení', '(min-width: 980px) 40vw, 100vw') }}</figure>
+      <div class="ujisteni">
+        <img src="{{ base }}img/sipka-modra.webp" alt="" width="600" height="545" class="ujisteni-sipka">
+        <p><b>Praktické zapojení je dobrovolné</b>, bez překvapivých přepadů a&nbsp;šokových efektů.</p>
+        <p>Ukázkový příklad programu. Každý kurz přizpůsobíme vašemu pracovišti a&nbsp;lidem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# 8 GRYFIX EXPERIENCE #}
+<section class="gryfix">
+  <div class="wrap">
+    <div class="gryfix-panel">
+      <figure class="gryfix-foto">{{ img('teambuilding-hra.jpg', 'Týmová hra během teambuildingu', '(min-width: 980px) 46vw, 100vw') }}</figure>
+      <div class="gryfix-text">
+        <p class="stitek stitek-modry">Zážitkový teambuilding</p>
+        <h2>Bezpečnost i&nbsp;na teambuildingu<span class="tecka">.</span></h2>
+        <p>Edukace v&nbsp;oblasti bezpečnosti je také součástí teambuildingů <b>Gryfix Experience</b>. Tým si užije společný zážitek a&nbsp;odnese si dovednosti, které se hodí v&nbsp;práci i&nbsp;doma.</p>
+        <div class="tlacitka">
+          <a class="tl tl-tmave" href="https://www.gryfix.cz" rel="noopener"><span>Teambuildingy Gryfix</span><i aria-hidden="true"></i></a>
+          <a class="odkaz" href="#poptavka" data-zajem="Teambuilding s Gryfix Experience">Poptat teambuilding</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# 9 TÉMATA #}
+<section class="temata" id="temata">
+  <div class="wrap temata-mrizka">
+    <div class="temata-strana">
+      <p class="stitek">Témata do detailu</p>
+      <h2>21 témat, ze kterých skládáme program<span class="tecka">.</span></h2>
+      <p>U každého tématu najdete, co může kurz pokrýt, i&nbsp;kde jsou jeho hranice.</p>
+      <figure class="temata-foto">{{ img('svitilna.jpg', 'Svítilna jako prostředek osobní bezpečnosti', '(min-width: 980px) 30vw, 100vw') }}</figure>
+    </div>
+    <div class="akordeon">
+      {% for t in data.temata %}
+      <details>
+        <summary><span class="t-c">{{ '%02d'|format(t.c) }}</span><span class="t-n">{{ t.nazev }}</span><i aria-hidden="true"></i></summary>
+        <div class="t-obsah">
+          {% for u in t.uvod %}<p>{{ u }}</p>{% endfor %}
+          {% for s in t.skupiny %}
+          {% if s.nadpis %}<h4>{{ s.nadpis }}</h4>{% endif %}
+          <ul>{% for x in s.body %}<li>{{ x }}</li>{% endfor %}</ul>
+          {% endfor %}
+          {% for p in t.pozn %}<p class="t-pozn">{{ p }}</p>{% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 10 DANIEL #}
+<section class="daniel" id="daniel">
+  <div class="wrap daniel-mrizka">
+    <figure class="daniel-foto">
+      {{ img('daniel-vrana.jpg', 'Bc. Daniel Vrána', '(min-width: 980px) 30vw, 80vw') }}
+    </figure>
+    <div class="daniel-text">
+      <p class="stitek">Kdo vás školí</p>
+      <h2>Bc. Daniel Vrána</h2>
+      <p class="daniel-role">Zakladatel Vrána Response · bezpečnostní expert</p>
+      <p class="daniel-praxe"><b>12 let</b> praxe u&nbsp;státních bezpečnostních složek.</p>
+      <p>Učí, co dělat v&nbsp;prvních minutách krizové situace, než dorazí pomoc: všímat si, rozhodnout se, domluvit se a&nbsp;pomoct. Srozumitelně, prakticky a&nbsp;s&nbsp;ohledem na lidi, kteří se školení účastní.</p>
+      <p class="heslo">BE READY. BE SAFE.</p>
+    </div>
+    <img class="daniel-vojak" src="{{ base }}img/vojak-svetly.svg" alt="" width="1083" height="1452">
+  </div>
+</section>
+
+{# 11 POPTÁVKA #}
+<section class="poptavka" id="poptavka">
+  <div class="wrap poptavka-mrizka">
+    <div class="poptavka-karta">
+      <p class="stitek">Poptávka</p>
+      <h2>Zajímají Vás detaily a&nbsp;možnosti?</h2>
+      <p>Napište, o&nbsp;jaké pracoviště jde a&nbsp;co by si měli lidé vyzkoušet. Ozveme se s&nbsp;návrhem programu a&nbsp;termínu.</p>
+      <div class="vizitka">
+        {{ img('daniel-vrana.jpg', 'Daniel Vrána', '96px', cls='vizitka-foto') }}
+        <div>
+          <p><b>Bc. Daniel Vrána</b><br>Zakladatel Vrána Response</p>
+          <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a><br><a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
+        </div>
+      </div>
+      <img class="poptavka-sipka" src="{{ base }}img/sipka-dolu.webp" alt="" width="427" height="600">
+    </div>
+    <div class="poptavka-form">
+      {% include "_formular.html" %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

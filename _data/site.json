@@ -1,0 +1,59 @@
+{
+  "slug": "vrana-response",
+  "nazev": "Vrána Response",
+  "url": "https://webhunter-navrhy.github.io/vrana-response/",
+  "base": "/vrana-response/",
+  "lang": "cs",
+  "popis": "Bezpečnostní workshopy a roční programy pro firmy, školy a úřady. Daniel Vrána, 12 let u státních bezpečnostních složek. První minuty krizové situace.",
+  "navrh": true,
+  "domena": "",
+  "og_image": "skupina-nacvik.jpg",
+  "logo": "img/logo.svg",
+  "theme_color": "#13284A",
+  "typ": "ProfessionalService",
+  "ico": "",
+  "kontakt": {
+    "email": "info@vranaresponse.cz",
+    "telefon": "+420 728 956 206",
+    "adresa": {
+      "ulice": "",
+      "psc": "",
+      "mesto": "",
+      "zeme": "CZ"
+    }
+  },
+  "oteviraci_doba": [],
+  "sameas": [],
+  "cenove_rozpeti": "",
+  "formular": {
+    "endpoint": "",
+    "demo": true,
+    "predmet": "Poptávka z webu Vrána Response"
+  },
+  "nav": [
+    {
+      "text": "Kurzy",
+      "href": "#kurzy"
+    },
+    {
+      "text": "Roční program",
+      "href": "#rocni-program"
+    },
+    {
+      "text": "Pro koho",
+      "href": "#pro-koho"
+    },
+    {
+      "text": "Průběh",
+      "href": "#prubeh"
+    },
+    {
+      "text": "Témata",
+      "href": "#temata"
+    },
+    {
+      "text": "Daniel",
+      "href": "#daniel"
+    }
+  ]
+}
