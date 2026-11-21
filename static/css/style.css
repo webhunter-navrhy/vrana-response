@@ -496,8 +496,8 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 
 /* ---------- 12 patička ---------- */
 .paticka { padding: var(--sekce) 0 28px; background: var(--noc); border-top: 1px solid var(--linka-sv); margin-top: 0; }
-.paticka-horni { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(24px, 4vw, 64px); align-items: start; margin-bottom: clamp(40px, 6vw, 80px); }
-.paticka-logo { width: clamp(220px, 24vw, 360px); }
+.paticka-horni { display: grid; grid-template-columns: 1fr auto; gap: clamp(24px, 4vw, 64px); align-items: start; margin-bottom: clamp(40px, 6vw, 80px); }
+.paticka-logo { width: clamp(240px, 46vw, 680px); height: auto; margin-bottom: clamp(28px, 4vw, 48px); }
 .paticka-kontakt { display: grid; gap: .3rem; }
 .paticka-kontakt .stitek { justify-self: start; }
 .paticka-kontakt a { font-size: clamp(1.2rem, 1rem + .8vw, 1.7rem); font-weight: 600; text-decoration: none; }
@@ -564,8 +564,6 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   .daniel-foto { max-width: 420px; }
   .gryfix-panel { grid-template-columns: 1fr; }
   .gryfix-foto img { aspect-ratio: 16 / 9; min-height: 0; height: auto; }
-  .paticka-horni { grid-template-columns: 1fr 1fr; }
-  .paticka-logo { grid-column: 1 / -1; }
 }
 @media (max-width: 700px) {
   .hlavicka { padding-top: 8px; }

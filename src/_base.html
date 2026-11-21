@@ -41,7 +41,6 @@
 <footer class="paticka">
   <div class="wrap">
     <div class="paticka-horni">
-      <img src="{{ base }}img/logo.svg" alt="Vrána Response" width="2100" height="1716" class="paticka-logo">
       <div class="paticka-kontakt">
         <p class="stitek">Zajímají Vás detaily a možnosti?</p>
         <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a></p>
@@ -53,7 +52,7 @@
       </nav>
     </div>
     <div class="paticka-dole">
-      <p class="paticka-heslo" aria-label="Be ready. Be safe.">BE READY.<br><span>BE SAFE.</span></p>
+      <img src="{{ base }}img/logo.svg" alt="Vrána Response" width="2100" height="1716" class="paticka-logo" loading="lazy">
     </div>
     <div class="paticka-spodek">
       <p>© {{ site.rok if site.rok is defined else 2026 }} {{ site.nazev }} · Bc. Daniel Vrána{% if site.ico %} · IČO {{ site.ico }}{% endif %}</p>
