@@ -240,9 +240,9 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .cena { font-family: var(--f-dis); font-weight: 800; font-size: clamp(2rem, 1.6rem + 1vw, 2.6rem); line-height: 1; font-variant-numeric: tabular-nums; }
 
 /* ---------- křídlo z letáku: tón v tónu na plochách ---------- */
-.uvod, .zalozky-obsah, .kazuistika, .daniel, .poptavka-karta, .paticka, .balicek-deska, .kurz-telo { position: relative; isolation: isolate; }
-.uvod, .zalozky-obsah, .kazuistika, .poptavka-karta, .paticka, .balicek-deska { overflow: clip; }
-.uvod::before, .zalozky-obsah::before, .kazuistika::before, .daniel::before, .poptavka-karta::before, .paticka::before, .balicek-deska::before, .kurz-telo::before {
+.uvod, .zalozky-obsah, .kazuistika, .daniel, .poptavka-karta, .paticka, .balicek-deska, .kurz-telo, .rocni { position: relative; isolation: isolate; }
+.uvod, .zalozky-obsah, .kazuistika, .poptavka-karta, .paticka, .balicek-deska, .rocni { overflow: clip; }
+.uvod::before, .zalozky-obsah::before, .kazuistika::before, .daniel::before, .poptavka-karta::before, .paticka::before, .balicek-deska::before, .kurz-telo::before, .rocni::before {
   content: ""; position: absolute; z-index: -1; pointer-events: none;
   aspect-ratio: 680 / 278; background: url("../img/kridlo-svetle.svg") no-repeat center / contain;
 }
@@ -251,7 +251,8 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .kazuistika::before { width: 78%; right: -16%; top: -18%; opacity: .07; background-image: url("../img/kridlo-navy.svg"); }
 .daniel::before { display: none; }
 .poptavka-karta::before { width: 170%; left: -40%; bottom: -12%; opacity: .08; }
-.paticka::before { width: min(1700px, 130vw); right: -22%; top: 8%; opacity: .05; }
+.paticka::before { width: min(1700px, 130vw); right: -22%; top: 20%; opacity: .05; }
+.rocni::before { width: min(1500px, 105%); right: -20%; top: -4%; opacity: .08; background-image: url("../img/kridlo-navy.svg"); }
 .balicek-deska::before { width: 160%; left: -34%; bottom: -16%; opacity: .16; }
 .kurz-telo::before { width: 150%; right: -60%; bottom: -14%; opacity: .06; }
 .daniel > .wrap { position: relative; z-index: 1; }
@@ -504,7 +505,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .paticka-menu a { text-decoration: none; color: var(--text-sv); }
 .paticka-menu a:hover { color: var(--limetka); }
 .paticka-dole { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-.paticka-vojak { width: clamp(150px, 19vw, 300px); height: auto; opacity: .5; margin-bottom: 0; pointer-events: none; flex-shrink: 0; }
+.paticka-vojak { width: clamp(170px, 26vw, 410px); height: auto; opacity: .5; margin-bottom: 0; margin-top: calc(-1 * clamp(0px, 9vw, 170px)); margin-right: calc(-1 * clamp(0px, 3.4vw, 64px)); pointer-events: none; flex-shrink: 0; }
 .paticka-heslo { font-family: var(--f-dis); font-weight: 800; font-size: clamp(4rem, 1rem + 13vw, 15.5rem); line-height: .96; letter-spacing: -.01em; color: var(--panel); margin-bottom: clamp(28px, 4vw, 48px); }
 .paticka-heslo span { color: var(--limetka); }
 .paticka-spodek { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; font-size: .85rem; color: rgba(230, 238, 251, .55); border-top: 1px solid var(--linka-sv); padding-top: 18px; }
@@ -647,7 +648,8 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 @media (max-width: 700px) {
-  .paticka-vojak { width: 110px; opacity: .4; }
+  .paticka-vojak { width: 130px; opacity: .4; margin-top: 0; margin-right: -12px; }
+  .rocni::before { width: 230%; right: -70%; top: 2%; }
 }
 @media (max-width: 480px) {
   .paticka-vojak { display: none; }
