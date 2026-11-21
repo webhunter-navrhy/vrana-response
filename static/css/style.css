@@ -245,9 +245,9 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   content: ""; position: absolute; z-index: -1; pointer-events: none;
   aspect-ratio: 680 / 278; background: url("../img/kridlo-svetle.svg") no-repeat center / contain;
 }
-.uvod::before { width: min(1500px, 118vw); left: -14%; bottom: -4%; opacity: .07; }
+.uvod::before { width: min(1500px, 118vw); left: -14%; top: clamp(40px, 7vw, 120px); opacity: .07; }
 .zalozky-obsah::before { width: 120%; right: -32%; bottom: -10%; opacity: .06; }
-.kazuistika::before { width: 78%; right: -16%; top: -18%; opacity: .1; background-image: url("../img/kridlo-navy.svg"); }
+.kazuistika::before { width: 78%; right: -16%; top: -18%; opacity: .07; background-image: url("../img/kridlo-navy.svg"); }
 .daniel::before { width: 82%; left: -18%; top: -6%; opacity: .07; background-image: url("../img/kridlo-navy.svg"); }
 .poptavka-karta::before { width: 170%; left: -40%; bottom: -12%; opacity: .08; }
 .paticka::before { width: min(1700px, 130vw); right: -22%; top: 8%; opacity: .05; }
@@ -304,7 +304,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .kurz-cena-vyhodna .kurz-cena-j { color: var(--navy); }
 
 /* ---------- kazuistika (Pro koho) ---------- */
-.kazuistika { margin-top: clamp(14px, 1.6vw, 20px); background: var(--limetka); color: var(--navy); border-radius: var(--r-xl); padding: clamp(24px, 3.6vw, 52px); display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(18px, 4vw, 64px); align-items: center; }
+.kazuistika { margin-top: 12px; background: var(--panel); color: var(--navy); border-radius: var(--r-xl); padding: clamp(24px, 3.6vw, 52px); display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(18px, 4vw, 64px); align-items: center; }
 .kazuistika .stitek { background: var(--navy); color: var(--limetka); margin-bottom: 1rem; }
 .kazuistika h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(2.2rem, 1.5rem + 2.2vw, 3.9rem); line-height: 1.04; letter-spacing: 0; }
 .kazuistika .tecka { color: var(--modra); }
@@ -624,7 +624,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   .kombinace { grid-template-columns: 1fr; }
   .kurz-ceny { grid-template-columns: 1fr; }
   .kurz-telo .tl { width: 100%; justify-content: space-between; }
-  .uvod::before { width: 220vw; left: -50%; bottom: 0; }
+  .uvod::before { width: 220vw; left: -50%; top: 6%; }
   .paticka::before { width: 260vw; }
 }
 @media (max-width: 440px) {
