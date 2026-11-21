@@ -41,6 +41,7 @@
 <footer class="paticka">
   <div class="wrap">
     <div class="paticka-horni">
+      <img src="{{ base }}img/logo.svg" alt="Vrána Response" width="2100" height="1716" class="paticka-logo" loading="lazy">
       <div class="paticka-kontakt">
         <p class="stitek">Zajímají Vás detaily a možnosti?</p>
         <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a></p>
@@ -50,9 +51,6 @@
         {% for n in site.nav %}<a href="{{ n.href }}">{{ n.text }}</a>{% endfor %}
         <a href="https://www.gryfix.cz" rel="noopener">Gryfix Experience ↗</a>
       </nav>
-    </div>
-    <div class="paticka-dole">
-      <img src="{{ base }}img/logo.svg" alt="Vrána Response" width="2100" height="1716" class="paticka-logo" loading="lazy">
     </div>
     <div class="paticka-spodek">
       <p>© {{ site.rok if site.rok is defined else 2026 }} {{ site.nazev }} · Bc. Daniel Vrána{% if site.ico %} · IČO {{ site.ico }}{% endif %}</p>
