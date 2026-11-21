@@ -41,13 +41,13 @@
 <footer class="paticka">
   <div class="wrap">
     <div class="paticka-horni">
-      <img src="{{ base }}img/orlice.svg" alt="" width="809" height="372" class="paticka-logo" loading="lazy">
+      <p class="paticka-heslo" aria-label="Be ready. Be safe.">BE READY.<br><span>BE SAFE.</span></p>
       <div class="paticka-kontakt">
         <p class="stitek">Zajímají Vás detaily a možnosti?</p>
         <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a></p>
         <p><a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
       </div>
-      <p class="paticka-heslo" aria-label="Be ready. Be safe.">BE READY.<br><span>BE SAFE.</span></p>
+      <img src="{{ base }}img/orlice.svg" alt="" width="809" height="372" class="paticka-logo" loading="lazy">
       <nav class="paticka-menu" aria-label="Patička">
         {% for n in site.nav %}<a href="{{ n.href }}">{{ n.text }}</a>{% endfor %}
         <a href="https://www.gryfix.cz" rel="noopener">Gryfix Experience ↗</a>
