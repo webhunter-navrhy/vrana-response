@@ -27,7 +27,7 @@
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
 <header class="hlavicka">
   <div class="hlavicka-pruh">
-    <a href="{{ url('') }}" class="logo" aria-label="{{ site.nazev }} – úvod"><img src="{{ base }}{{ site.logo }}" alt="{{ site.nazev }}" width="56" height="46"></a>
+    <a href="{{ url('') }}" class="logo" aria-label="{{ site.nazev }} – úvod"><img src="{{ base }}img/orlice-navy.svg" alt="" width="809" height="372"><span class="logo-nazev">Vrána Response</span></a>
     <nav class="menu" id="menu" aria-label="Hlavní">
       {% for n in site.nav %}<a href="{{ n.href }}">{{ n.text }}</a>{% endfor %}
     </nav>
@@ -41,7 +41,7 @@
 <footer class="paticka">
   <div class="wrap">
     <div class="paticka-horni">
-      <img src="{{ base }}img/orlice.svg" alt="" width="160" height="74" class="paticka-orlice">
+      <img src="{{ base }}img/logo.svg" alt="Vrána Response" width="2100" height="1716" class="paticka-logo">
       <div class="paticka-kontakt">
         <p class="stitek">Zajímají Vás detaily a možnosti?</p>
         <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a></p>

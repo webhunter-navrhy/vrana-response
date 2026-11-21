@@ -133,8 +133,9 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   padding: 6px 6px 6px 22px;
   box-shadow: 0 10px 30px -12px rgba(5, 12, 26, .55);
 }
-.logo { display: flex; align-items: center; min-height: 44px; }
-.logo img { width: 52px; height: auto; }
+.logo { display: flex; align-items: center; gap: .7rem; min-height: 44px; text-decoration: none; color: var(--navy); flex: none; }
+.logo img { width: 60px; height: auto; }
+.logo-nazev { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: 1.45rem; line-height: 1; letter-spacing: .02em; white-space: nowrap; }
 .menu { display: flex; gap: clamp(.9rem, 1.8vw, 1.8rem); margin-left: auto; }
 .menu a { text-decoration: none; font-weight: 550; font-size: .96rem; padding: .4rem 0; position: relative; }
 .menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--modra); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
@@ -227,8 +228,8 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .balicek-telo h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.9rem, 1.5rem + 1vw, 2.5rem); line-height: 1.06; letter-spacing: 0; }
 .balicek-delka { font-weight: 600; color: var(--nebe); font-size: .95rem; }
 .balicek-hlavni .balicek-delka { color: var(--modra-t); }
-.balicek-telo > p:not(.balicek-delka) { color: var(--text-sv); }
-.balicek-hlavni .balicek-telo > p:not(.balicek-delka) { color: var(--text-tm); }
+.balicek-telo > p:not([class]) { color: var(--text-sv); }
+.balicek-hlavni .balicek-telo > p:not([class]) { color: var(--text-tm); }
 .balicek ul { list-style: none; display: grid; gap: .5rem; margin: .4rem 0 .6rem; font-size: .98rem; }
 .balicek li { display: grid; grid-template-columns: 18px 1fr; gap: .6rem; line-height: 1.4; }
 .balicek li::before { content: ""; width: 10px; height: 10px; margin-top: .4em; border-radius: 50%; background: var(--limetka); }
@@ -236,6 +237,78 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .balicek-pata { margin-top: auto; padding-top: 1.1rem; border-top: 1px solid var(--linka-sv); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .balicek-hlavni .balicek-pata { border-color: var(--linka-tm); }
 .cena { font-family: var(--f-dis); font-weight: 800; font-size: clamp(2rem, 1.6rem + 1vw, 2.6rem); line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* ---------- křídlo z letáku: tón v tónu na plochách ---------- */
+.uvod, .zalozky-obsah, .kazuistika, .daniel, .poptavka-karta, .paticka, .balicek-deska, .kurz-telo { position: relative; isolation: isolate; }
+.uvod, .zalozky-obsah, .kazuistika, .poptavka-karta, .paticka, .balicek-deska { overflow: clip; }
+.uvod::before, .zalozky-obsah::before, .kazuistika::before, .daniel::before, .poptavka-karta::before, .paticka::before, .balicek-deska::before, .kurz-telo::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  aspect-ratio: 680 / 278; background: url("../img/kridlo-svetle.svg") no-repeat center / contain;
+}
+.uvod::before { width: min(1500px, 118vw); left: -14%; bottom: -4%; opacity: .07; }
+.zalozky-obsah::before { width: 120%; right: -32%; bottom: -10%; opacity: .06; }
+.kazuistika::before { width: 78%; right: -16%; top: -18%; opacity: .1; background-image: url("../img/kridlo-navy.svg"); }
+.daniel::before { width: 82%; left: -18%; top: -6%; opacity: .07; background-image: url("../img/kridlo-navy.svg"); }
+.poptavka-karta::before { width: 170%; left: -40%; bottom: -12%; opacity: .08; }
+.paticka::before { width: min(1700px, 130vw); right: -22%; top: 8%; opacity: .05; }
+.balicek-deska::before { width: 160%; left: -34%; bottom: -16%; opacity: .16; }
+.kurz-telo::before { width: 150%; right: -60%; bottom: -14%; opacity: .06; }
+.daniel > .wrap { position: relative; z-index: 1; }
+
+/* ---------- kurzy: Firmy / Školy / Úřady ---------- */
+.varianty { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px; background: var(--navy); border: 1px solid var(--linka-sv); border-radius: 24px; margin-bottom: clamp(22px, 2.6vw, 36px); }
+.varianty button { border: 0; background: transparent; color: var(--panel); border-radius: 18px; padding: .85rem 1.2rem .9rem; text-align: left; display: grid; gap: .2rem; min-height: 44px; transition: background .2s, color .2s; }
+.varianty button:hover { background: rgba(230, 238, 251, .06); }
+.varianty b { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.45rem, 1.15rem + .9vw, 2rem); line-height: 1.04; }
+.varianty span { font-size: .88rem; color: var(--text-sv); }
+.varianty [aria-selected="true"], .varianty [aria-selected="true"]:hover { background: var(--limetka); color: var(--navy); }
+.varianty [aria-selected="true"] span { color: var(--navy); }
+.varianta-uvod { color: var(--text-sv); max-width: 64ch; margin-bottom: clamp(18px, 2vw, 26px); }
+.balicek-telo > p.balicek-uroven, .kurz-telo > p.balicek-uroven { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--limetka); margin-bottom: -.4rem; }
+.balicek-hlavni .balicek-telo > p.balicek-uroven { color: var(--modra-t); }
+.balicek-deska { background: var(--navy); aspect-ratio: 16 / 11; display: flex; align-items: flex-end; padding: clamp(18px, 2vw, 28px); }
+.deska-heslo { font-family: var(--f-dis); font-weight: 800; font-size: clamp(2.4rem, 1.7rem + 1.7vw, 3.5rem); line-height: .98; color: var(--panel); }
+.deska-heslo span { color: var(--limetka); }
+.rocni-programy { display: grid; gap: 8px; margin: .2rem 0; }
+.rp { display: grid; gap: .25rem; background: var(--bila); color: var(--navy); border: 1px solid var(--linka-tm); border-radius: 16px; padding: .85rem 1rem; text-decoration: none; transition: border-color .2s, transform .2s; }
+.rp:hover { border-color: var(--modra); }
+.rp-hlava { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.rp-hlava b, .rp-cena { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.35rem, 1.15rem + .5vw, 1.6rem); line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rp-tempo { font-weight: 600; color: var(--modra-t); font-size: .92rem; }
+.rp-slozeni { font-size: .86rem; color: var(--text-tm); line-height: 1.4; }
+.balicek-telo > p.balicek-pozn { font-size: .88rem; color: var(--text-tm); }
+
+.kombinace { margin-top: clamp(12px, 1.4vw, 20px); display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: clamp(10px, 1.4vw, 18px); align-items: stretch; background: var(--limetka); color: var(--navy); border-radius: var(--r-xl); padding: clamp(14px, 1.6vw, 20px); }
+.kombinace-hlava { display: grid; align-content: center; gap: .4rem; padding: .4rem clamp(4px, 1vw, 14px); }
+.kombinace-nadpis { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(1.7rem, 1.3rem + 1vw, 2.3rem); line-height: 1.04; }
+.kombinace-hlava p:last-child { font-size: .95rem; }
+.kombinace-polozka { background: rgba(247, 250, 255, .55); border-radius: 18px; padding: 1rem 1.1rem; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "n t" "c t" "u t"; gap: .35rem 1rem; align-items: center; }
+.kombinace-nazev { grid-area: n; font-weight: 700; }
+.kombinace-polozka .cena { grid-area: c; }
+.kombinace-uspora { grid-area: u; justify-self: start; font-weight: 700; font-size: .86rem; background: var(--navy); color: var(--limetka); padding: .25em .6em; border-radius: 6px; }
+.kombinace-polozka .tl { grid-area: t; }
+
+.kurz-jeden { display: grid; grid-template-columns: .9fr 1.1fr; background: var(--navy); border: 1px solid var(--linka-sv); border-radius: var(--r-xl); overflow: hidden; }
+.kurz-foto img { width: 100%; height: 100%; min-height: 440px; object-fit: cover; }
+.kurz-telo { padding: clamp(22px, 3.4vw, 48px); display: flex; flex-direction: column; gap: .9rem; align-items: flex-start; overflow: clip; }
+.kurz-telo h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(2.4rem, 1.8rem + 1.8vw, 3.8rem); line-height: 1.04; letter-spacing: 0; }
+.kurz-popis { color: var(--text-sv); max-width: 54ch; }
+.kurz-jeden ul { list-style: none; display: grid; gap: .5rem; font-size: .98rem; }
+.kurz-jeden li { display: grid; grid-template-columns: 18px 1fr; gap: .6rem; line-height: 1.4; }
+.kurz-jeden li::before { content: ""; width: 10px; height: 10px; margin-top: .4em; border-radius: 50%; background: var(--limetka); }
+.kurz-ceny { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin: .5rem 0 .4rem; }
+.kurz-cena { border: 1px solid var(--linka-sv); border-radius: 18px; padding: 1rem 1.1rem; display: grid; gap: .4rem; background: rgba(12, 27, 51, .35); }
+.kurz-cena-vyhodna { background: var(--limetka); color: var(--navy); border-color: var(--limetka); }
+.kurz-cena-n { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.kurz-cena-j { font-size: .88rem; color: var(--text-sv); }
+.kurz-cena-vyhodna .kurz-cena-j { color: var(--navy); }
+
+/* ---------- kazuistika (Pro koho) ---------- */
+.kazuistika { margin-top: clamp(14px, 1.6vw, 20px); background: var(--limetka); color: var(--navy); border-radius: var(--r-xl); padding: clamp(24px, 3.6vw, 52px); display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(18px, 4vw, 64px); align-items: center; }
+.kazuistika .stitek { background: var(--navy); color: var(--limetka); margin-bottom: 1rem; }
+.kazuistika h3 { font-family: var(--f-dis); font-weight: 800; text-transform: uppercase; font-size: clamp(2.2rem, 1.5rem + 2.2vw, 3.9rem); line-height: 1.04; letter-spacing: 0; }
+.kazuistika .tecka { color: var(--modra); }
+.kazuistika-text { display: grid; gap: .9rem; font-size: clamp(1.05rem, 1rem + .3vw, 1.25rem); line-height: 1.5; max-width: 54ch; }
 
 /* ---------- 5 roční program ---------- */
 .rocni .stitek { background: var(--navy); color: var(--limetka); }
@@ -421,7 +494,7 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 /* ---------- 12 patička ---------- */
 .paticka { padding: var(--sekce) 0 28px; background: var(--noc); border-top: 1px solid var(--linka-sv); margin-top: 0; }
 .paticka-horni { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(24px, 4vw, 64px); align-items: start; margin-bottom: clamp(40px, 6vw, 80px); }
-.paticka-orlice { width: clamp(110px, 12vw, 160px); }
+.paticka-logo { width: clamp(220px, 24vw, 360px); }
 .paticka-kontakt { display: grid; gap: .3rem; }
 .paticka-kontakt .stitek { justify-self: start; }
 .paticka-kontakt a { font-size: clamp(1.2rem, 1rem + .8vw, 1.7rem); font-weight: 600; text-decoration: none; }
@@ -488,12 +561,14 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   .gryfix-panel { grid-template-columns: 1fr; }
   .gryfix-foto img { aspect-ratio: 16 / 9; min-height: 0; height: auto; }
   .paticka-horni { grid-template-columns: 1fr 1fr; }
-  .paticka-orlice { grid-column: 1 / -1; }
+  .paticka-logo { grid-column: 1 / -1; }
 }
 @media (max-width: 700px) {
   .hlavicka { padding-top: 8px; }
   .hlavicka-pruh { gap: .7rem; padding: 5px 5px 5px 16px; }
-  .logo img { width: 44px; }
+  .logo img { width: 46px; }
+  .logo { gap: .5rem; }
+  .logo-nazev { font-size: 1.12rem; }
   .balicky { grid-template-columns: 1fr; }
   .balicek-hlavni { display: flex; grid-column: auto; }
   .plan-mesice { grid-template-columns: repeat(2, 1fr); }
@@ -529,6 +604,39 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   .mesic { padding: 10px; }
   .mesic-n { font-size: .84rem; }
   .tlacitka .tl { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 1180px) {
+  .logo-nazev { font-size: 1.3rem; }
+}
+@media (max-width: 980px) {
+  .kombinace { grid-template-columns: 1fr 1fr; }
+  .kombinace-hlava { grid-column: 1 / -1; }
+  .kurz-jeden { grid-template-columns: 1fr; }
+  .kurz-foto img { min-height: 0; aspect-ratio: 16 / 9; }
+  .kazuistika { grid-template-columns: 1fr; }
+  .kazuistika::before { width: 130%; right: -40%; top: auto; bottom: -10%; }
+}
+@media (max-width: 700px) {
+  .varianty { grid-template-columns: 1fr; }
+  .varianty button { padding: .7rem 1rem; display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; }
+  .kombinace { grid-template-columns: 1fr; }
+  .kurz-ceny { grid-template-columns: 1fr; }
+  .kurz-telo .tl { width: 100%; justify-content: space-between; }
+  .uvod::before { width: 220vw; left: -50%; bottom: 0; }
+  .paticka::before { width: 260vw; }
+}
+@media (max-width: 440px) {
+  .hlavicka-pruh .tl-mini span { white-space: nowrap; font-size: .84rem; }
+  .hlavicka-pruh .tl-mini { padding-left: .8rem; gap: .4rem; }
+  .hlavicka-pruh { gap: .45rem; padding-left: 12px; }
+  .logo { gap: .4rem; }
+  .logo img { width: 38px; }
+  .logo-nazev { font-size: .98rem; white-space: nowrap; }
+}
+@media (max-width: 400px) {
+  .logo img { width: 34px; }
+  .logo-nazev { font-size: .92rem; }
+  .kombinace-polozka { grid-template-columns: 1fr; grid-template-areas: "n" "c" "u" "t"; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

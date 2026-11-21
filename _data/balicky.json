@@ -1,45 +1,99 @@
-[
- {
-  "kod": "A",
-  "nazev": "Teoretické školení",
-  "delka": "2–3 hodiny",
-  "cena": "15 000 Kč",
-  "foto": "workshop-tabule.jpg",
-  "popis": "Výklad s modelovými situacemi z vašeho provozu: jak včas rozpoznat riziko, rozhodnout se pod tlakem a domluvit se v týmu.",
-  "body": [
-   "Modelové situace podle pracoviště",
-   "Varovné chování a předání obavy",
-   "Postup při násilném incidentu",
-   "Komunikace s IZS"
-  ]
- },
- {
-  "kod": "B",
-  "nazev": "Praktický nácvik",
-  "delka": "2–3 hodiny",
-  "cena": "15 000 Kč",
-  "foto": "nacvik-kpr.jpg",
-  "popis": "Nácvik přímo ve vašem prostoru: odchod, ukrytí, uzamčení, přivolání pomoci a zastavení masivního krvácení.",
-  "body": [
-   "Prověření únikových cest a místností",
-   "Ukrytí a barikádování na vašich dveřích",
-   "Kontrola masivního krvácení, turniket",
-   "Rozdělení rolí v malém týmu"
-  ]
- },
- {
-  "kod": "A+B",
-  "nazev": "Kompletní program",
-  "delka": "4–6 hodin",
-  "cena": "25 000 Kč",
-  "foto": "skupina-nacvik.jpg",
-  "doporuceno": true,
-  "popis": "Teorie a praxe v jednom dni. Nejdřív vysvětlení a modelové situace, potom nácvik a společný rozbor.",
-  "body": [
-   "Vše z teoretického školení",
-   "Vše z praktického nácviku",
-   "Závěrečný týmový scénář",
-   "1–3 konkrétní doporučení pro další kroky"
-  ]
- }
-]
+{
+ "varianty": [
+  {
+   "id": "firmy",
+   "nazev": "Pro firmy",
+   "pod": "Starter · Advanced · Experience",
+   "uvod": "Tři úrovně, které na sebe navazují. Začněte kurzem Starter, v Advanced si postupy vyzkoušíte naostro a v Experience je udržíte po celý rok.",
+   "urovne": [
+    {
+     "kod": "1",
+     "uroven": "Vstupní úroveň",
+     "nazev": "Starter",
+     "delka": "3 hodiny · kapacita bez omezení",
+     "cena": "45 000 Kč",
+     "foto": "workshop-flipchart.jpg",
+     "popis": "Více teorie: popis situací a interaktivní debata o správném postupu.",
+     "body": [
+      "Základy bezpečnosti i první pomoci",
+      "Principy krizové komunikace a kooperace",
+      "Interaktivní debata o správném postupu",
+      "Certifikát pro firmu i každého účastníka"
+     ]
+    },
+    {
+     "kod": "2",
+     "uroven": "Druhá úroveň",
+     "nazev": "Advanced",
+     "delka": "6 hodin · max. 25 osob",
+     "cena": "75 000 Kč",
+     "foto": "nacvik-kpr.jpg",
+     "popis": "Pouze pro týmy, které už prošly kurzem Starter. Zážitková interaktivní forma.",
+     "body": [
+      "Praktické ukázky",
+      "Simulované scénky",
+      "Nácvik situací",
+      "Certifikát pro firmu i každého účastníka"
+     ]
+    }
+   ],
+   "experience": {
+    "kod": "3",
+    "uroven": "Třetí úroveň",
+    "nazev": "Experience",
+    "popis": "Roční školení, které jde skutečně do hloubky, nebo bezpečnost formou zážitkového teambuildingu.",
+    "programy": [
+     { "nazev": "BE READY", "tempo": "Ob měsíc · 6 kurzů za rok", "slozeni": "3× Starter (3 h, kapacita bez omezení) + 3× Advanced (6 h, max. 25 osob)", "cena": "388 000 Kč", "zajem": "Roční školení BE READY" },
+     { "nazev": "BE SAFE", "tempo": "Každý měsíc · 12 kurzů za rok", "slozeni": "2× Starter (3 h, kapacita bez omezení) + 10× Advanced (6 h, max. 25 osob)", "cena": "676 000 Kč", "zajem": "Roční školení BE SAFE" }
+    ],
+    "pozn": "Jinou frekvenci, délku kurzů nebo teambuilding naceníme podle počtu zaměstnanců a formy vzdělávání."
+   },
+   "kombinace": [
+    { "nazev": "Starter + Advanced", "cena": "99 000 Kč", "uspora": "ušetříte 21 000 Kč" },
+    { "nazev": "Starter + 2× Advanced", "cena": "145 000 Kč", "uspora": "ušetříte 50 000 Kč" }
+   ]
+  },
+  {
+   "id": "skoly",
+   "nazev": "Pro školy",
+   "pod": "Safe Zone",
+   "kurz": {
+    "nazev": "Safe Zone",
+    "stitek": "Pro zaměstnance škol",
+    "foto": "unikovy-vychod.jpg",
+    "popis": "Jednorázový kurz pro zaměstnance škol kombinující teorii a praktický nácvik situací.",
+    "delka": "5–6 hodin · až 25 osob",
+    "body": [
+     "Teorie i praktický nácvik situací",
+     "Pro pedagogické i nepedagogické zaměstnance a vedení",
+     "Program podle prostor a provozu vaší školy"
+    ],
+    "ceny": [
+     { "nazev": "1 kurz", "cena": "1 400 Kč", "jednotka": "za osobu" },
+     { "nazev": "2 kurzy", "cena": "1 100 Kč", "jednotka": "za osobu a kurz" }
+    ]
+   }
+  },
+  {
+   "id": "urady",
+   "nazev": "Pro úřady",
+   "pod": "Protected Space",
+   "kurz": {
+    "nazev": "Protected Space",
+    "stitek": "Pro zaměstnance úřadů",
+    "foto": "recepce-prazdna.jpg",
+    "popis": "Jednorázový kurz pro zaměstnance úřadů kombinující teorii a praktický nácvik situací.",
+    "delka": "5–6 hodin · až 25 osob",
+    "body": [
+     "Teorie i praktický nácvik situací",
+     "Kontakt s veřejností, přepážky a podatelny",
+     "Program podle prostor a provozu vašeho úřadu"
+    ],
+    "ceny": [
+     { "nazev": "1 kurz", "cena": "1 500 Kč", "jednotka": "za osobu" },
+     { "nazev": "2 kurzy", "cena": "1 200 Kč", "jednotka": "za osobu a kurz" }
+    ]
+   }
+  }
+ ]
+}

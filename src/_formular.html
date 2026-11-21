@@ -2,9 +2,12 @@
 <form class="formular" method="post" {% if site.formular.endpoint and not site.formular.demo %}action="{{ site.formular.endpoint }}"{% endif %} data-endpoint="{{ site.formular.endpoint }}" data-demo="{{ 1 if site.formular.demo or not site.formular.endpoint else 0 }}">
   <fieldset class="cipy">
     <legend>O co máte zájem?</legend>
-    {% for b in data.balicky %}<label class="cip"><input type="checkbox" name="zajem" value="{{ b.kod }} · {{ b.nazev }}"><span>{{ b.nazev }}</span></label>{% endfor %}
-    <label class="cip"><input type="checkbox" name="zajem" value="Roční program · 12 kurzů" data-plan="12"><span>Roční program · 12 kurzů</span></label>
-    <label class="cip"><input type="checkbox" name="zajem" value="Roční program · 6 kurzů" data-plan="6"><span>Roční program · 6 kurzů</span></label>
+    {% set f = data.balicky.varianty[0] %}
+    {% for b in f.urovne %}<label class="cip"><input type="checkbox" name="zajem" value="Firmy · {{ b.nazev }}"><span>{{ b.nazev }}</span></label>{% endfor %}
+    {% for k in f.kombinace %}<label class="cip"><input type="checkbox" name="zajem" value="Firmy · {{ k.nazev }}"><span>{{ k.nazev }}</span></label>{% endfor %}
+    <label class="cip"><input type="checkbox" name="zajem" value="Roční školení BE READY" data-plan="6"><span>Roční BE READY</span></label>
+    <label class="cip"><input type="checkbox" name="zajem" value="Roční školení BE SAFE" data-plan="12"><span>Roční BE SAFE</span></label>
+    {% for v in data.balicky.varianty[1:] %}<label class="cip"><input type="checkbox" name="zajem" value="{{ v.nazev|replace('Pro ', '')|capitalize }} · {{ v.kurz.nazev }}"><span>{{ v.kurz.nazev }} ({{ v.nazev|replace('Pro ', '') }})</span></label>{% endfor %}
     <label class="cip"><input type="checkbox" name="zajem" value="Teambuilding s Gryfix Experience"><span>Teambuilding s Gryfix</span></label>
   </fieldset>
   <div class="pole-plan" hidden>
@@ -19,7 +22,7 @@
     <label>E-mail <input name="email" type="email" autocomplete="email" required></label>
     <label>Telefon <input name="telefon" type="tel" autocomplete="tel"></label>
   </div>
-  <label>Počet osob <select name="osob"><option>do 10</option><option selected>10–20</option><option>více skupin (přes 20)</option><option>zatím nevím</option></select></label>
+  <label>Počet osob <select name="osob"><option>do 10</option><option selected>10–25</option><option>více skupin (přes 25)</option><option>zatím nevím</option></select></label>
   <label>Zpráva <textarea name="zprava" rows="4" placeholder="Typ pracoviště, termín, co vás nejvíc trápí…"></textarea></label>
   <div class="past" aria-hidden="true"><label>Nevyplňovat <input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="_subject" value="{{ site.formular.predmet }}">

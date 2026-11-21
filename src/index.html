@@ -67,37 +67,110 @@
   </div>
 </section>
 
-{# 4 JEDNORÁZOVÉ KURZY #}
+{# 4 KURZY A CENY – Firmy / Školy / Úřady #}
 <section class="kurzy" id="kurzy">
   <div class="wrap">
     <div class="hlava-sekce">
       <div>
-        <p class="stitek">Jednorázové kurzy</p>
+        <p class="stitek">Kurzy a ceny</p>
         <h2>Vyberte si balíček<span class="tecka">.</span></h2>
       </div>
-      <p>Pro skupinu do 20&nbsp;osob, u&nbsp;vás na pracovišti. Při více skupinách sleva. Termín a&nbsp;konkrétní místo po vzájemné dohodě.</p>
+      <p>Tři varianty podle toho, kde pracujete: pro firmy, pro školy a&nbsp;pro úřady. Školíme u&nbsp;vás na pracovišti, termín a&nbsp;konkrétní místo domluvíme.</p>
     </div>
-    <div class="balicky">
-      {% for b in data.balicky %}
-      <article class="balicek{% if b.doporuceno is defined and b.doporuceno %} balicek-hlavni{% endif %}">
-        <figure class="balicek-foto">
-          {{ img(b.foto, b.nazev, '(min-width: 980px) 31vw, (min-width: 700px) 50vw, 100vw') }}
-          <span class="balicek-kod">{{ b.kod }}</span>
-          {% if b.doporuceno is defined and b.doporuceno %}<span class="balicek-dop">Doporučujeme</span>{% endif %}
-        </figure>
-        <div class="balicek-telo">
-          <h3>{{ b.nazev }}</h3>
-          <p class="balicek-delka">{{ b.delka }} · do 20 osob</p>
-          <p>{{ b.popis }}</p>
-          <ul>{% for x in b.body %}<li>{{ x }}</li>{% endfor %}</ul>
-          <div class="balicek-pata">
-            <p class="cena">{{ b.cena|replace(' Kč', '&nbsp;Kč')|safe }}</p>
-            <a class="tl tl-mini" href="#poptavka" data-zajem="{{ b.kod }} · {{ b.nazev }}"><span>Poptat</span><i aria-hidden="true"></i></a>
+
+    <div class="varianty" role="tablist" aria-label="Pro koho je balíček">
+      {% for v in data.balicky.varianty %}<button type="button" role="tab" id="vt-{{ v.id }}" aria-controls="vp-{{ v.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" {% if not loop.first %}tabindex="-1"{% endif %}><b>{{ v.nazev }}</b><span>{{ v.pod }}</span></button>{% endfor %}
+    </div>
+
+    {% for v in data.balicky.varianty %}
+    <div class="varianta" role="tabpanel" id="vp-{{ v.id }}" aria-labelledby="vt-{{ v.id }}" {% if not loop.first %}hidden{% endif %}>
+      {% if 'urovne' in v %}
+      <p class="varianta-uvod">{{ v.uvod }}</p>
+      <div class="balicky">
+        {% for b in v.urovne %}
+        <article class="balicek">
+          <figure class="balicek-foto">
+            {{ img(b.foto, b.nazev, '(min-width: 980px) 31vw, (min-width: 700px) 50vw, 100vw') }}
+            <span class="balicek-kod">{{ b.kod }}</span>
+          </figure>
+          <div class="balicek-telo">
+            <p class="balicek-uroven">{{ b.uroven }}</p>
+            <h3>{{ b.nazev }}</h3>
+            <p class="balicek-delka">{{ b.delka }}</p>
+            <p>{{ b.popis }}</p>
+            <ul>{% for x in b.body %}<li>{{ x }}</li>{% endfor %}</ul>
+            <div class="balicek-pata">
+              <p class="cena">{{ b.cena|replace(' Kč', '&nbsp;Kč')|safe }}</p>
+              <a class="tl tl-mini" href="#poptavka" data-zajem="Firmy · {{ b.nazev }}"><span>Poptat</span><i aria-hidden="true"></i></a>
+            </div>
           </div>
+        </article>
+        {% endfor %}
+        {% set e = v.experience %}
+        <article class="balicek balicek-hlavni">
+          <div class="balicek-deska">
+            <span class="balicek-kod">{{ e.kod }}</span>
+            <p class="deska-heslo">BE READY.<br><span>BE SAFE.</span></p>
+          </div>
+          <div class="balicek-telo">
+            <p class="balicek-uroven">{{ e.uroven }}</p>
+            <h3>{{ e.nazev }}</h3>
+            <p>{{ e.popis }}</p>
+            <div class="rocni-programy">
+              {% for r in e.programy %}
+              <a class="rp" href="#rocni-program" data-zajem="{{ r.zajem }}" data-rezim-cil="{{ 6 if r.nazev == 'BE READY' else 12 }}">
+                <span class="rp-hlava"><b>{{ r.nazev }}</b><span class="rp-cena">{{ r.cena|replace(' Kč', '&nbsp;Kč')|safe }}</span></span>
+                <span class="rp-tempo">{{ r.tempo }}</span>
+                <span class="rp-slozeni">{{ r.slozeni }}</span>
+              </a>
+              {% endfor %}
+            </div>
+            <p class="balicek-pozn">{{ e.pozn }}</p>
+            <div class="balicek-pata">
+              <a class="tl tl-mini tl-tmave" href="#rocni-program"><span>Sestavit roční plán</span><i aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="kombinace">
+        <div class="kombinace-hlava">
+          <p class="kombinace-nadpis">Výhodnější v&nbsp;kombinaci</p>
+          <p>Starter a&nbsp;Advanced objednané společně</p>
+        </div>
+        {% for k in v.kombinace %}
+        <div class="kombinace-polozka">
+          <p class="kombinace-nazev">{{ k.nazev }}</p>
+          <p class="cena">{{ k.cena|replace(' Kč', '&nbsp;Kč')|safe }}</p>
+          <p class="kombinace-uspora">{{ k.uspora|replace(' Kč', '&nbsp;Kč')|safe }}</p>
+          <a class="tl tl-mini tl-tmave" href="#poptavka" data-zajem="Firmy · {{ k.nazev }}"><span>Poptat</span><i aria-hidden="true"></i></a>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      {% set k = v.kurz %}
+      <article class="kurz-jeden">
+        <figure class="kurz-foto">{{ img(k.foto, k.nazev, '(min-width: 980px) 40vw, 100vw') }}</figure>
+        <div class="kurz-telo">
+          <p class="balicek-uroven">{{ k.stitek }}</p>
+          <h3>{{ k.nazev }}</h3>
+          <p class="balicek-delka">{{ k.delka }}</p>
+          <p class="kurz-popis">{{ k.popis }}</p>
+          <ul>{% for x in k.body %}<li>{{ x }}</li>{% endfor %}</ul>
+          <div class="kurz-ceny">
+            {% for c in k.ceny %}
+            <div class="kurz-cena{% if loop.last %} kurz-cena-vyhodna{% endif %}">
+              <p class="kurz-cena-n">{{ c.nazev }}</p>
+              <p class="cena">{{ c.cena|replace(' Kč', '&nbsp;Kč')|safe }}</p>
+              <p class="kurz-cena-j">{{ c.jednotka }}</p>
+            </div>
+            {% endfor %}
+          </div>
+          <a class="tl" href="#poptavka" data-zajem="{{ v.nazev|replace('Pro ', '')|capitalize }} · {{ k.nazev }}"><span>Poptat {{ k.nazev }}</span><i aria-hidden="true"></i></a>
         </div>
       </article>
-      {% endfor %}
+      {% endif %}
     </div>
+    {% endfor %}
   </div>
 </section>
 
@@ -109,14 +182,14 @@
         <p class="stitek">Roční program</p>
         <h2>Bezpečnost po celý rok<span class="tecka">.</span></h2>
       </div>
-      <p>Pravidelný kurz drží dovednosti v&nbsp;kondici. Vyberte tempo a&nbsp;sestavte si plán z&nbsp;12&nbsp;okruhů bezpečnosti. Výběr pak propíšeme do poptávky.</p>
+      <p>Úroveň Experience pro firmy. Pravidelný kurz drží dovednosti v&nbsp;kondici: vyberte BE READY nebo BE SAFE a&nbsp;sestavte si plán z&nbsp;12&nbsp;okruhů bezpečnosti. Výběr pak propíšeme do poptávky.</p>
     </div>
 
     <div class="planovac" data-planovac>
       <div class="plan-ovladani">
         <div class="prepinac" role="radiogroup" aria-label="Tempo ročního programu">
-          <button type="button" role="radio" aria-checked="true" data-rezim="12"><b>Každý měsíc</b><span>12 kurzů za rok</span></button>
-          <button type="button" role="radio" aria-checked="false" data-rezim="6"><b>Každý druhý měsíc</b><span>6 kurzů za rok</span></button>
+          <button type="button" role="radio" aria-checked="true" data-rezim="12"><b>BE SAFE · každý měsíc</b><span>12 kurzů za rok · 676&nbsp;000&nbsp;Kč</span></button>
+          <button type="button" role="radio" aria-checked="false" data-rezim="6"><b>BE READY · ob měsíc</b><span>6 kurzů za rok · 388&nbsp;000&nbsp;Kč</span></button>
         </div>
         <label class="plan-start">Začátek programu
           <select data-start>
@@ -138,7 +211,7 @@
       </div>
 
       <div class="plan-pata">
-        <p class="plan-souhrn" data-souhrn>12 kurzů · 12 okruhů · cena na dotaz</p>
+        <p class="plan-souhrn" data-souhrn>BE SAFE · 12 kurzů · 676&nbsp;000&nbsp;Kč</p>
         <a class="tl" href="#poptavka" data-poptat-plan><span>Poptat tento plán</span><i aria-hidden="true"></i></a>
       </div>
     </div>
@@ -181,6 +254,16 @@
         {% for p in i.pozn %}<p class="panel-pozn">{{ p }}</p>{% endfor %}
       </div>
       {% endfor %}
+    </div>
+    <div class="kazuistika">
+      <div class="kazuistika-hlava">
+        <p class="stitek">Kazuistika</p>
+        <h3>Trénujeme na skutečných případech<span class="tecka">.</span></h3>
+      </div>
+      <div class="kazuistika-text">
+        <p>Součástí školení je také kazuistika. Vycházíme ze situací, které už jste sami zažili, nebo z&nbsp;toho, co se stalo jinde.</p>
+        <p><b>Případy si prakticky projdeme a&nbsp;natrénujeme správný postup.</b></p>
+      </div>
     </div>
   </div>
 </section>

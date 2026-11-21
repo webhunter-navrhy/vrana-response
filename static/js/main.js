@@ -46,8 +46,8 @@
       var serazene = vybrane6.slice().sort(function (a, b) { return a - b; });
       for (var i = 0; i < 12; i++) {
         var m = (start + i) % 12;
-        if (rezim === 12) vysl.push({ m: m, kurz: i + 1, o: okruhy[i] });
-        else if (i % 2 === 0) vysl.push({ m: m, kurz: i / 2 + 1, o: serazene[i / 2] ? podle(serazene[i / 2]) : null });
+        if (rezim === 12) vysl.push({ m: m, kurz: i + 1, typ: (i === 0 || i === 6) ? 'Starter' : 'Advanced', o: okruhy[i] });
+        else if (i % 2 === 0) vysl.push({ m: m, kurz: i / 2 + 1, typ: (i / 2) % 2 === 0 ? 'Starter' : 'Advanced', o: serazene[i / 2] ? podle(serazene[i / 2]) : null });
         else vysl.push({ m: m, volno: true });
       }
       return vysl;
@@ -66,7 +66,7 @@
         var li = document.createElement('li');
         li.className = 'mesic' + (x.volno ? ' mesic-volno' : (x.o ? '' : ' mesic-prazdny'));
         li.style.animationDelay = (idx * 25) + 'ms';
-        var hlava = '<span class="mesic-m">' + MESICE[x.m] + '<small>' + (x.volno ? 'bez kurzu' : x.kurz + '. kurz') + '</small></span>';
+        var hlava = '<span class="mesic-m">' + MESICE[x.m] + '<small>' + (x.volno ? 'bez kurzu' : x.kurz + '. kurz · ' + x.typ) + '</small></span>';
         if (x.volno) li.innerHTML = hlava + '<span class="mesic-n">Volný měsíc</span>';
         else if (x.o) li.innerHTML = hlava + '<span class="mesic-n">' + x.o.nazev + '</span><span class="mesic-c">' + dvojmistne(x.o.c) + '</span>';
         else li.innerHTML = hlava + '<span class="mesic-n">Vyberte okruh v seznamu</span>';
@@ -75,13 +75,13 @@
       elNap.classList.remove('varovani');
       if (rezim === 12) {
         elNap.textContent = 'Každý měsíc jeden okruh, všech 12 za rok.';
-        elSouhrn.innerHTML = '12 kurzů · <em>12 okruhů</em> · cena na dotaz';
+        elSouhrn.innerHTML = '<em>BE SAFE</em> · 12 kurzů · 676&nbsp;000&nbsp;Kč';
       } else {
         var zbyva = 6 - vybrane6.length;
         elNap.textContent = zbyva > 0
           ? 'Vyberte ještě ' + zbyva + (zbyva === 1 ? ' okruh.' : (zbyva < 5 ? ' okruhy.' : ' okruhů.'))
           : 'Vybráno 6 okruhů z 12. Kliknutím je můžete vyměnit.';
-        elSouhrn.innerHTML = '6 kurzů · <em>každý druhý měsíc</em> · cena na dotaz';
+        elSouhrn.innerHTML = '<em>BE READY</em> · 6 kurzů · 388&nbsp;000&nbsp;Kč';
       }
     };
 
@@ -97,7 +97,7 @@
     tlOkruh.forEach(function (b) {
       b.addEventListener('click', function () {
         if (rezim === 12) {
-          elNap.textContent = 'Při kurzu každý měsíc projdete všech 12 okruhů. Šest si vyberete u varianty každý druhý měsíc.';
+          elNap.textContent = 'Při kurzu každý měsíc projdete všech 12 okruhů. Šest si vyberete u BE READY (ob měsíc).';
           elNap.classList.add('varovani');
           return;
         }
@@ -114,14 +114,17 @@
     if (tlPlan && form) {
       tlPlan.addEventListener('click', function () {
         var radky = plan().filter(function (x) { return !x.volno; }).map(function (x) {
-          return MESICE[x.m] + ': ' + (x.o ? dvojmistne(x.o.c) + ' ' + x.o.nazev : '(okruh doplníme)');
+          return MESICE[x.m] + ' (' + x.typ + '): ' + (x.o ? dvojmistne(x.o.c) + ' ' + x.o.nazev : '(okruh doplníme)');
         });
-        var hlavicka = rezim === 12 ? 'Roční program – každý měsíc (12 kurzů)' : 'Roční program – každý druhý měsíc (6 kurzů)';
+        var hlavicka = rezim === 12 ? 'Roční školení BE SAFE – každý měsíc (2× Starter + 10× Advanced, 676 000 Kč)' : 'Roční školení BE READY – ob měsíc (3× Starter + 3× Advanced, 388 000 Kč)';
         $('textarea[name="plan"]', form).value = hlavicka + ', začátek: ' + MESICE[parseInt(elStart.value, 10) || 0] + '\n' + radky.join('\n');
         $('.pole-plan', form).hidden = false;
         $$('input[data-plan]', form).forEach(function (i) { i.checked = i.getAttribute('data-plan') === String(rezim); });
       });
     }
+    $$('[data-rezim-cil]').forEach(function (a) {
+      a.addEventListener('click', function () { rezim = parseInt(a.getAttribute('data-rezim-cil'), 10); vykresli(); });
+    });
     vykresli();
   }
 
@@ -134,27 +137,29 @@
     });
   }
 
-  /* ---------- záložky Pro koho ---------- */
-  var taby = $$('.zalozky [role="tab"]');
-  var vyber = function (t, fokus) {
-    taby.forEach(function (x) {
-      var on = x === t;
-      x.setAttribute('aria-selected', on ? 'true' : 'false');
-      x.tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(x.getAttribute('aria-controls'));
-      if (panel) panel.hidden = !on;
-    });
-    if (fokus) t.focus();
-  };
-  taby.forEach(function (t, i) {
-    t.addEventListener('click', function () { vyber(t); });
-    t.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = taby[(i + 1) % taby.length];
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = taby[(i - 1 + taby.length) % taby.length];
-      else if (e.key === 'Home') n = taby[0];
-      else if (e.key === 'End') n = taby[taby.length - 1];
-      if (n) { e.preventDefault(); vyber(n, true); }
+  /* ---------- záložky (Kurzy a ceny, Pro koho) – každá skupina zvlášť ---------- */
+  $$('[role="tablist"]').forEach(function (seznam) {
+    var taby = $$('[role="tab"]', seznam);
+    var vyber = function (t, fokus) {
+      taby.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(x.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !on;
+      });
+      if (fokus) t.focus();
+    };
+    taby.forEach(function (t, i) {
+      t.addEventListener('click', function () { vyber(t); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = taby[(i + 1) % taby.length];
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = taby[(i - 1 + taby.length) % taby.length];
+        else if (e.key === 'Home') n = taby[0];
+        else if (e.key === 'End') n = taby[taby.length - 1];
+        if (n) { e.preventDefault(); vyber(n, true); }
+      });
     });
   });
 
