@@ -496,8 +496,8 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 
 /* ---------- 12 patička ---------- */
 .paticka { padding: var(--sekce) 0 28px; background: var(--noc); border-top: 1px solid var(--linka-sv); margin-top: 0; }
-.paticka-horni { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(28px, 5vw, 88px); align-items: start; margin-bottom: clamp(48px, 6vw, 88px); }
-.paticka-logo { width: clamp(150px, 14vw, 210px); height: auto; }
+.paticka-horni { display: grid; grid-template-columns: auto auto 1fr auto; gap: clamp(28px, 4vw, 72px); align-items: start; margin-bottom: clamp(48px, 6vw, 88px); }
+.paticka-logo { width: clamp(140px, 12vw, 190px); height: auto; }
 .paticka-kontakt { display: grid; gap: .3rem; }
 .paticka-kontakt .stitek { justify-self: start; }
 .paticka-kontakt a { font-size: clamp(1.2rem, 1rem + .8vw, 1.7rem); font-weight: 600; text-decoration: none; }
@@ -507,8 +507,9 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
 .paticka-menu a:hover { color: var(--limetka); }
 .paticka-dole { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
 .paticka-vojak { width: clamp(170px, 26vw, 410px); height: auto; opacity: .5; margin-bottom: 0; margin-top: calc(-1 * clamp(0px, 9vw, 170px)); margin-right: calc(-1 * clamp(0px, 3.4vw, 64px)); pointer-events: none; flex-shrink: 0; }
-.paticka-heslo { font-family: var(--f-dis); font-weight: 800; font-size: clamp(3rem, 1.6rem + 3.6vw, 5.6rem); line-height: .92; letter-spacing: -.005em; color: var(--panel); justify-self: center; margin: 0; }
+.paticka-heslo { font-family: var(--f-dis); font-weight: 800; font-size: clamp(2.6rem, 1.2rem + 3vw, 4.6rem); line-height: .92; letter-spacing: -.005em; color: var(--panel); justify-self: center; margin: 0; }
 .paticka-heslo span { color: var(--limetka); }
+@media (max-width: 1100px) and (min-width: 701px) { .paticka-horni { grid-template-columns: auto 1fr auto; row-gap: 28px; } .paticka-heslo { grid-column: 2; grid-row: 2; justify-self: start; } .paticka-logo { grid-column: 1; grid-row: 1 / span 2; } .paticka-kontakt { grid-column: 2; grid-row: 1; } .paticka-menu { grid-column: 3; grid-row: 1 / span 2; } }
 .paticka-spodek { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; font-size: .85rem; color: rgba(230, 238, 251, .55); border-top: 1px solid var(--linka-sv); padding-top: 18px; }
 
 /* ---------- responzivita ---------- */
@@ -596,7 +597,8 @@ h3 { font-size: var(--h3); font-weight: 600; line-height: 1.2; letter-spacing: -
   .ujisteni { padding-right: clamp(22px, 2.6vw, 34px); padding-bottom: 96px; }
   .poptavka-sipka { width: 54px; }
   .paticka-horni { grid-template-columns: 1fr; gap: 36px; }
-  .paticka-heslo { justify-self: start; }
+  .paticka-heslo { justify-self: start; grid-column: auto; grid-row: auto; }
+  .paticka-logo { width: 140px; }
   .tym, .rocni, .prubeh, .daniel { margin-inline: 6px; }
 }
 @media (max-width: 400px) {
