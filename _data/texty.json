@@ -1,0 +1,514 @@
+{
+ "stranky": [
+  {
+   "nazev": "Hlavní stránka",
+   "skupiny": [
+    {
+     "nazev": "Úvod (první obrazovka)",
+     "pole": [
+      {
+       "k": "uvod.stitek",
+       "label": "Štítek nad nadpisem",
+       "t": "Bezpečnostní edukace pro firmy, školy a úřady"
+      },
+      {
+       "k": "uvod.nadpis",
+       "label": "Hlavní nadpis",
+       "t": "První minuty krizové situace.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "uvod.perex",
+       "label": "Text pod nadpisem",
+       "t": "Vaši lidé si v modelových situacích vyzkouší, jak včas rozpoznat riziko, rozhodnout se pod tlakem a spolupracovat. Dovednosti využijí v práci i mimo ni.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "uvod.tl1",
+       "label": "Tlačítko 1 (na kurzy)",
+       "t": "Vybrat kurz"
+      },
+      {
+       "k": "uvod.tl2",
+       "label": "Tlačítko 2 (na roční plán)",
+       "t": "Sestavit roční plán"
+      },
+      {
+       "k": "uvod.foto",
+       "label": "Velká fotka",
+       "typ": "foto",
+       "src": "skupina-nacvik.jpg",
+       "alt": "Skupina zaměstnanců při nácviku krizové situace"
+      },
+      {
+       "k": "uvod.karta",
+       "label": "Štítek na fotce",
+       "t": "**Roční program** · **Jednorázový workshop** · **Zážitkový teambuilding**"
+      }
+     ]
+    },
+    {
+     "nazev": "Benefit",
+     "pole": [
+      {
+       "k": "benefit.stitek",
+       "label": "Štítek",
+       "t": "Zaměstnanecký benefit roku 2027"
+      },
+      {
+       "k": "benefit.nadpis",
+       "label": "Nadpis",
+       "t": "Bezpečnost jako nový benefit.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "benefit.text",
+       "label": "Text",
+       "t": "Edukace v bezpečnosti je benefit, který zvyšuje pocit bezpečnosti zaměstnanců na pracovišti i mimo něj, zvyšuje jejich sebevědomí, připravenost i schopnost správně reagovat a vyhodnocovat situace.\n\nBezpečnostní workshopy zvyšují konkurenceschopnost firem z pohledu zaměstnavatele a zlepšují image firmy právě díky smysluplné péči o zaměstnance.",
+       "typ": "odstavce"
+      },
+      {
+       "k": "benefit.cislo1",
+       "label": "Číslo 1",
+       "t": "12"
+      },
+      {
+       "k": "benefit.cislo1_text",
+       "label": "Popis čísla 1",
+       "t": "let praxe u státních bezpečnostních složek"
+      },
+      {
+       "k": "benefit.cislo2",
+       "label": "Číslo 2",
+       "t": "12"
+      },
+      {
+       "k": "benefit.cislo2_text",
+       "label": "Popis čísla 2",
+       "t": "okruhů bezpečnosti v ročním programu"
+      },
+      {
+       "k": "benefit.foto",
+       "label": "Fotka v pruhu",
+       "typ": "foto",
+       "src": "workshop-tabule.jpg",
+       "alt": "Výklad u tabule během workshopu"
+      }
+     ]
+    },
+    {
+     "nazev": "Kazuistika",
+     "id": "kazuistika",
+     "zapnuto": true,
+     "pole": [
+      {
+       "k": "kaz.stitek",
+       "label": "Štítek",
+       "t": "Kazuistika"
+      },
+      {
+       "k": "kaz.nadpis",
+       "label": "Nadpis",
+       "t": "Trénujeme na skutečných případech.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "kaz.text",
+       "label": "Text",
+       "t": "Součástí školení je také kazuistika. Vycházíme ze situací, které už jste sami zažili, nebo z toho, co se stalo jinde.\n\n**Případy si prakticky projdeme a natrénujeme správný postup.**",
+       "typ": "odstavce"
+      }
+     ]
+    },
+    {
+     "nazev": "Co si tým vyzkouší",
+     "id": "tym",
+     "zapnuto": true,
+     "pole": [
+      {
+       "k": "tym.foto",
+       "label": "Fotka",
+       "typ": "foto",
+       "src": "venku-nacvik.jpg",
+       "alt": "Nácvik reakce v terénu"
+      },
+      {
+       "k": "tym.stitek",
+       "label": "Štítek",
+       "t": "Získejte klíčové dovednosti formou zážitku"
+      },
+      {
+       "k": "tym.nadpis",
+       "label": "Nadpis",
+       "t": "Co si tým vyzkouší?",
+       "typ": "nadpis"
+      },
+      {
+       "k": "tym.u1",
+       "label": "Dovednost 1 – nadpis",
+       "t": "Včas rozpoznat riziko"
+      },
+      {
+       "k": "tym.u1_text",
+       "label": "Dovednost 1 – popis",
+       "t": "Všímat si okolí a varovného chování na pracovišti i ve veřejném prostoru."
+      },
+      {
+       "k": "tym.u2",
+       "label": "Dovednost 2 – nadpis",
+       "t": "Rozhodnout se pod tlakem"
+      },
+      {
+       "k": "tym.u2_text",
+       "label": "Dovednost 2 – popis",
+       "t": "Vyhodnotit dostupné informace a zvolit bezpečnou reakci na mimořádnou situaci."
+      },
+      {
+       "k": "tym.u3",
+       "label": "Dovednost 3 – nadpis",
+       "t": "Zklidnit napjatou situaci"
+      },
+      {
+       "k": "tym.u3_text",
+       "label": "Dovednost 3 – popis",
+       "t": "Nacvičit deeskalační komunikaci a rozdělení rolí v týmu."
+      },
+      {
+       "k": "tym.u4",
+       "label": "Dovednost 4 – nadpis",
+       "t": "Poskytnout a přivolat pomoc"
+      },
+      {
+       "k": "tym.u4_text",
+       "label": "Dovednost 4 – popis",
+       "t": "Procvičit základy první pomoci a předávání informací IZS."
+      },
+      {
+       "k": "tym.pozn",
+       "label": "Poznámka pod seznamem",
+       "t": "Program lze zařadit mezi zaměstnanecké benefity. Školíme ve vašich kancelářích, na pobočkách nebo v prostoru připraveném pro teambuilding.",
+       "typ": "dlouhy"
+      }
+     ]
+    },
+    {
+     "nazev": "Kurzy a ceny",
+     "popis": "Samotné kurzy, ceny a fotky balíčků upravíte v části Kurzy a ceny.",
+     "pole": [
+      {
+       "k": "kurzy.stitek",
+       "label": "Štítek",
+       "t": "Kurzy a ceny"
+      },
+      {
+       "k": "kurzy.nadpis",
+       "label": "Nadpis",
+       "t": "Vyberte si balíček.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "kurzy.text",
+       "label": "Text vedle nadpisu",
+       "t": "Tři varianty podle toho, kde pracujete: pro firmy, pro školy a pro úřady. Školíme u vás na pracovišti, termín a konkrétní místo domluvíme.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "kurzy.komb_nadpis",
+       "label": "Kombinace – nadpis",
+       "t": "Výhodnější v kombinaci"
+      },
+      {
+       "k": "kurzy.komb_text",
+       "label": "Kombinace – podnadpis",
+       "t": "Starter a Advanced objednané společně"
+      }
+     ]
+    },
+    {
+     "nazev": "Roční program",
+     "popis": "Okruhy a ceny programů upravíte v částech Roční program a Kurzy a ceny.",
+     "pole": [
+      {
+       "k": "rocni.stitek",
+       "label": "Štítek",
+       "t": "Roční program"
+      },
+      {
+       "k": "rocni.nadpis",
+       "label": "Nadpis",
+       "t": "Bezpečnost po celý rok.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "rocni.text",
+       "label": "Text vedle nadpisu",
+       "t": "Úroveň Experience pro firmy. Pravidelný kurz drží dovednosti v kondici: vyberte BE READY nebo BE SAFE a sestavte si plán z 12 okruhů bezpečnosti. Výběr pak propíšeme do poptávky.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "rocni.detail",
+       "label": "Rozbalovací odkaz pod plánovačem",
+       "t": "Co obsahuje každý z 12 okruhů"
+      }
+     ]
+    },
+    {
+     "nazev": "Pro koho",
+     "popis": "Jednotlivé instituce upravíte v části Pro koho.",
+     "pole": [
+      {
+       "k": "prokoho.stitek",
+       "label": "Štítek",
+       "t": "Pro koho"
+      },
+      {
+       "k": "prokoho.nadpis",
+       "label": "Nadpis",
+       "t": "Program na míru vašemu provozu.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "prokoho.text",
+       "label": "Text vedle nadpisu",
+       "t": "Škola řeší jiné situace než hotelová recepce nebo noční směna. Vyberte typ instituce a podívejte se, co obvykle probíráme.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "prokoho.foto",
+       "label": "Fotka",
+       "typ": "foto",
+       "src": "recepce.jpg",
+       "alt": "Recepce a zákaznické pracoviště"
+      }
+     ]
+    },
+    {
+     "nazev": "Jak kurz probíhá",
+     "pole": [
+      {
+       "k": "prubeh.stitek",
+       "label": "Štítek",
+       "t": "Jak kurz probíhá"
+      },
+      {
+       "k": "prubeh.nadpis",
+       "label": "Nadpis",
+       "t": "Krátce vysvětlit, pak si to vyzkoušet.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "prubeh.text",
+       "label": "Text",
+       "t": "Krátké vysvětlení, modelové situace, nácvik a společný rozbor. Malá skupina umožní zapojit každého.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "prubeh.k1",
+       "label": "Krok 1",
+       "t": "Konfliktní návštěvník a narůstající agrese"
+      },
+      {
+       "k": "prubeh.k2",
+       "label": "Krok 2",
+       "t": "Domluva a přivolání pomoci v malém týmu (kdo volá 158)"
+      },
+      {
+       "k": "prubeh.k3",
+       "label": "Krok 3",
+       "t": "Reakce při násilném útoku (Utíkej – Schovej se – Bojuj)"
+      },
+      {
+       "k": "prubeh.k4",
+       "label": "Krok 4",
+       "t": "Základy zastavení masivního krvácení"
+      },
+      {
+       "k": "prubeh.zaver",
+       "label": "Závěr",
+       "t": "**Závěr:** společné shrnutí a 1–3 konkrétní doporučení pro další kroky."
+      },
+      {
+       "k": "prubeh.foto",
+       "label": "Fotka",
+       "typ": "foto",
+       "src": "krvaceni-sada.jpg",
+       "alt": "Sada pro zastavení masivního krvácení"
+      },
+      {
+       "k": "prubeh.uj1",
+       "label": "Ujištění 1",
+       "t": "**Praktické zapojení je dobrovolné**, bez překvapivých přepadů a šokových efektů."
+      },
+      {
+       "k": "prubeh.uj2",
+       "label": "Ujištění 2",
+       "t": "Ukázkový příklad programu. Každý kurz přizpůsobíme vašemu pracovišti a lidem."
+      }
+     ]
+    },
+    {
+     "nazev": "Teambuilding Gryfix",
+     "id": "gryfix",
+     "zapnuto": true,
+     "pole": [
+      {
+       "k": "gryfix.foto",
+       "label": "Fotka",
+       "typ": "foto",
+       "src": "teambuilding-hra.jpg",
+       "alt": "Týmová hra během teambuildingu"
+      },
+      {
+       "k": "gryfix.stitek",
+       "label": "Štítek",
+       "t": "Zážitkový teambuilding"
+      },
+      {
+       "k": "gryfix.nadpis",
+       "label": "Nadpis",
+       "t": "Bezpečnost i na teambuildingu.",
+       "typ": "nadpis"
+      },
+      {
+       "k": "gryfix.text",
+       "label": "Text",
+       "t": "Edukace v oblasti bezpečnosti je také součástí teambuildingů **Gryfix Experience**. Tým si užije společný zážitek a odnese si dovednosti, které se hodí v práci i doma.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "gryfix.tl1",
+       "label": "Tlačítko na web Gryfix",
+       "t": "Teambuildingy Gryfix"
+      },
+      {
+       "k": "gryfix.odkaz",
+       "label": "Adresa webu Gryfix",
+       "t": "https://www.gryfix.cz",
+       "typ": "odkaz"
+      },
+      {
+       "k": "gryfix.tl2",
+       "label": "Odkaz na poptávku",
+       "t": "Poptat teambuilding"
+      }
+     ]
+    },
+    {
+     "nazev": "Témata",
+     "popis": "Samotná témata upravíte v části Témata.",
+     "pole": [
+      {
+       "k": "temata.stitek",
+       "label": "Štítek",
+       "t": "Témata do detailu"
+      },
+      {
+       "k": "temata.nadpis",
+       "label": "Nadpis",
+       "t": "21 témat, ze kterých skládáme program.",
+       "typ": "nadpis",
+       "hint": "Když přidáte nebo odeberete téma, upravte i číslo v nadpisu."
+      },
+      {
+       "k": "temata.text",
+       "label": "Text",
+       "t": "U každého tématu najdete, co může kurz pokrýt, i kde jsou jeho hranice.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "temata.foto",
+       "label": "Fotka",
+       "typ": "foto",
+       "src": "svitilna.jpg",
+       "alt": "Svítilna jako prostředek osobní bezpečnosti"
+      }
+     ]
+    },
+    {
+     "nazev": "Kdo vás školí",
+     "pole": [
+      {
+       "k": "daniel.foto",
+       "label": "Portrét",
+       "typ": "foto",
+       "src": "daniel-vrana.jpg",
+       "alt": "Bc. Daniel Vrána"
+      },
+      {
+       "k": "daniel.stitek",
+       "label": "Štítek",
+       "t": "Kdo vás školí"
+      },
+      {
+       "k": "daniel.nadpis",
+       "label": "Jméno",
+       "t": "Bc. Daniel Vrána",
+       "typ": "nadpis"
+      },
+      {
+       "k": "daniel.role",
+       "label": "Role",
+       "t": "Zakladatel Vrána Response · bezpečnostní expert"
+      },
+      {
+       "k": "daniel.praxe",
+       "label": "Praxe",
+       "t": "**12 let** praxe u státních bezpečnostních složek."
+      },
+      {
+       "k": "daniel.text",
+       "label": "Text",
+       "t": "Učí, co dělat v prvních minutách krizové situace, než dorazí pomoc: všímat si, rozhodnout se, domluvit se a pomoct. Srozumitelně, prakticky a s ohledem na lidi, kteří se školení účastní.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "daniel.heslo",
+       "label": "Heslo",
+       "t": "BE READY. BE SAFE."
+      }
+     ]
+    },
+    {
+     "nazev": "Poptávka",
+     "popis": "E-mail a telefon na vizitce upravíte v části Kontakt a SEO.",
+     "pole": [
+      {
+       "k": "poptavka.stitek",
+       "label": "Štítek",
+       "t": "Poptávka"
+      },
+      {
+       "k": "poptavka.nadpis",
+       "label": "Nadpis",
+       "t": "Zajímají Vás detaily a možnosti?",
+       "typ": "nadpis"
+      },
+      {
+       "k": "poptavka.text",
+       "label": "Text",
+       "t": "Napište, o jaké pracoviště jde a co by si měli lidé vyzkoušet. Ozveme se s návrhem programu a termínu.",
+       "typ": "dlouhy"
+      },
+      {
+       "k": "poptavka.foto",
+       "label": "Fotka na vizitce",
+       "typ": "foto",
+       "src": "daniel-vrana.jpg",
+       "alt": "Daniel Vrána"
+      },
+      {
+       "k": "poptavka.jmeno",
+       "label": "Vizitka – jméno",
+       "t": "Bc. Daniel Vrána"
+      },
+      {
+       "k": "poptavka.role",
+       "label": "Vizitka – role",
+       "t": "Zakladatel Vrána Response"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

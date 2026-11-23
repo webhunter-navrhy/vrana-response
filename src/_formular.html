@@ -5,8 +5,9 @@
     {% set f = data.balicky.varianty[0] %}
     {% for b in f.urovne %}<label class="cip"><input type="checkbox" name="zajem" value="Firmy · {{ b.nazev }}"><span>{{ b.nazev }}</span></label>{% endfor %}
     {% for k in f.kombinace %}<label class="cip"><input type="checkbox" name="zajem" value="Firmy · {{ k.nazev }}"><span>{{ k.nazev }}</span></label>{% endfor %}
-    <label class="cip"><input type="checkbox" name="zajem" value="Roční školení BE READY" data-plan="6"><span>Roční BE READY</span></label>
-    <label class="cip"><input type="checkbox" name="zajem" value="Roční školení BE SAFE" data-plan="12"><span>Roční BE SAFE</span></label>
+    {% for pg in data.balicky.varianty[0].experience.programy[:2] %}
+    <label class="cip"><input type="checkbox" name="zajem" value="{{ pg.zajem }}" data-plan="{{ 6 if loop.first else 12 }}"><span>Roční {{ pg.nazev }}</span></label>
+    {% endfor %}
     {% for v in data.balicky.varianty[1:] %}<label class="cip"><input type="checkbox" name="zajem" value="{{ v.nazev|replace('Pro ', '')|capitalize }} · {{ v.kurz.nazev }}"><span>{{ v.kurz.nazev }} ({{ v.nazev|replace('Pro ', '') }})</span></label>{% endfor %}
     <label class="cip"><input type="checkbox" name="zajem" value="Teambuilding s Gryfix Experience"><span>Teambuilding s Gryfix</span></label>
   </fieldset>

@@ -55,6 +55,7 @@ class Obrazky:
         self.pocet = 0
 
     def _zpracuj(self, nazev):
+        nazev = nazev[4:] if nazev.startswith("img/") else nazev   # z adminu může přijít i cesta s img/
         if nazev in self.info:
             return self.info[nazev]
         zdroj = os.path.join(IMG, nazev)
@@ -87,6 +88,11 @@ class Obrazky:
             varianty.append((w, vyska, f"img/{out}"))
         self.info[nazev] = {"raster": True, "varianty": varianty}
         return self.info[nazev]
+
+    def nahled(self, nazev):
+        """Malá varianta pro náhled v administraci (relativně k webu)."""
+        i = self._zpracuj(nazev)
+        return i["src"] if not i["raster"] else min(i["varianty"], key=lambda v: abs(v[0] - 640))[2]
 
     def img(self, nazev, alt=None, sizes="100vw", cls="", eager=None, styl=""):
         if alt is None:
@@ -182,6 +188,54 @@ def main():
     env = Environment(loader=FileSystemLoader(SRC), autoescape=select_autoescape(["html"]), undefined=StrictUndefined)
     env.globals.update(site=site, data=data, base=base, asset=asset, url=url, img=obr.img, img_url=obr.img_url,
                        og_url=og_url, jsonld=jsonld(site), titulek="", popis="", cesta="", noindex=False)
+    # texty z administrace (_data/texty.json): T = odstavec, H = nadpis (koncová tečka = limetková tečka),
+    # P = víc odstavců (prázdný řádek), F = fotka {src, alt}; zapnuto(id) = vypínač sekce
+    tx, sk = {}, {}
+    for st in data.get("texty", {}).get("stranky", []):
+        for g in st["skupiny"]:
+            if g.get("id"):
+                sk[g["id"]] = g.get("zapnuto", True)
+            for pole in g["pole"]:
+                tx[pole["k"]] = pole
+
+    def _pole(k):
+        if k not in tx:
+            raise BuildError(f"_data/texty.json: chybí text {k}")
+        return tx[k]
+
+    def _txt(k):
+        return "\n".join(r.strip() for r in str(_pole(k).get("t", "")).strip().split("\n"))
+
+    def _md(t):
+        e = str(Markup.escape(t))
+        e = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", e)
+        e = re.sub(r"(?<!\w)([AaIiKkOoSsUuVvZz]) (?=\S)", "\\1\u00a0", e)   # předložky/spojky bez konce řádku
+        return e.replace("\u00a0", "&nbsp;").replace("\n", "<br>")
+
+    def T(k):
+        return Markup(_md(_txt(k)))
+
+    def H(k):
+        t = _txt(k)
+        if t.endswith(".") and not t.endswith(".."):
+            return Markup(_md(t[:-1]) + '<span class="tecka">.</span>')
+        return Markup(_md(t))
+
+    def P(k, cls=""):
+        c = f' class="{cls}"' if cls else ""
+        odst = [o.strip() for o in re.split(r"\n\s*\n", _txt(k)) if o.strip()]
+        return Markup("\n".join(f"<p{c}>{_md(o)}</p>" for o in odst))
+
+    def TS(k):
+        return " ".join(_txt(k).split())
+
+    def F(k, sizes="100vw", cls="", eager=None):
+        f = _pole(k)
+        if not f.get("src"):
+            raise BuildError(f"_data/texty.json: fotka {k} nemá src")
+        return obr.img(f["src"], f.get("alt", ""), sizes, cls=cls, eager=eager)
+
+    env.globals.update(T=T, H=H, P=P, TS=TS, F=F, zapnuto=lambda i: sk.get(i, True))
     stranky = []
     for f in sorted(os.listdir(SRC)):
         if not f.endswith(".html") or f.startswith("_"):
@@ -216,6 +270,26 @@ def main():
             fh.write(f"  <url><loc>{site['url']}{s}</loc><lastmod>{dnes}</lastmod></url>\n")
         fh.write("</urlset>\n")
     open(os.path.join(DIST, ".nojekyll"), "w").close()
+
+    # administrace (/admin/) + verze buildu (admin podle ní hlídá zveřejnění) + knihovna fotek s náhledy
+    adm = os.path.join(ROOT, "admin")
+    if os.path.isdir(adm):
+        shutil.copytree(adm, os.path.join(DIST, "admin"))
+        ai = os.path.join(DIST, "admin", "index.html")
+        h = open(ai, encoding="utf-8").read()
+        for k, f in (("__V_ACSS__", "admin/admin.css"), ("__V_AJS__", "admin/admin.js")):
+            h = h.replace(k, hash_souboru(os.path.join(DIST, f)))
+        open(ai, "w", encoding="utf-8").write(h)
+    json.dump({"sha": os.environ.get("GITHUB_SHA", "local"), "cas": datetime.datetime.now().isoformat(timespec="seconds")},
+              open(os.path.join(DIST, "version.json"), "w"))
+    knih = []
+    for d, _, fs in os.walk(IMG):
+        for f in sorted(fs):
+            if f.lower().endswith(RASTER):
+                rel = os.path.relpath(os.path.join(d, f), IMG)
+                knih.append({"src": rel, "nahled": obr.nahled(rel)})
+    knih.sort(key=lambda x: (not x["src"].startswith("uploads/"), x["src"]), reverse=False)
+    json.dump(knih, open(os.path.join(DIST, "images.json"), "w"), ensure_ascii=False)
     if site.get("domena") and not navrh:
         open(os.path.join(DIST, "CNAME"), "w").write(site["domena"] + "\n")
 

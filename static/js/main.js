@@ -75,15 +75,27 @@
       elNap.classList.remove('varovani');
       if (rezim === 12) {
         elNap.textContent = 'Každý měsíc jeden okruh, všech 12 za rok.';
-        elSouhrn.innerHTML = '<em>BE SAFE</em> · 12 kurzů · 676&nbsp;000&nbsp;Kč';
+        souhrn(12);
       } else {
         var zbyva = 6 - vybrane6.length;
         elNap.textContent = zbyva > 0
           ? 'Vyberte ještě ' + zbyva + (zbyva === 1 ? ' okruh.' : (zbyva < 5 ? ' okruhy.' : ' okruhů.'))
           : 'Vybráno 6 okruhů z 12. Kliknutím je můžete vyměnit.';
-        elSouhrn.innerHTML = '<em>BE READY</em> · 6 kurzů · 388&nbsp;000&nbsp;Kč';
+        souhrn(6);
       }
     };
+
+    function program(r) {
+      var b = tlRezim.filter(function (x) { return x.getAttribute('data-rezim') === String(r); })[0];
+      return { nazev: b.getAttribute('data-nazev'), cena: b.getAttribute('data-cena'), slozeni: b.getAttribute('data-slozeni'), zajem: b.getAttribute('data-zajem') };
+    }
+    function souhrn(r) {
+      var pg = program(r), em = document.createElement('em');
+      em.textContent = pg.nazev;
+      elSouhrn.textContent = '';
+      elSouhrn.appendChild(em);
+      elSouhrn.appendChild(document.createTextNode(' · ' + r + ' kurzů · ' + pg.cena.replace(/ /g, '\u00a0')));
+    }
 
     tlRezim.forEach(function (b) {
       b.addEventListener('click', function () { rezim = parseInt(b.getAttribute('data-rezim'), 10); vykresli(); });
@@ -116,7 +128,8 @@
         var radky = plan().filter(function (x) { return !x.volno; }).map(function (x) {
           return MESICE[x.m] + ' (' + x.typ + '): ' + (x.o ? dvojmistne(x.o.c) + ' ' + x.o.nazev : '(okruh doplníme)');
         });
-        var hlavicka = rezim === 12 ? 'Roční školení BE SAFE – každý měsíc (2× Starter + 10× Advanced, 676 000 Kč)' : 'Roční školení BE READY – ob měsíc (3× Starter + 3× Advanced, 388 000 Kč)';
+        var pg = program(rezim);
+        var hlavicka = pg.zajem + ' – ' + (rezim === 12 ? 'každý měsíc' : 'ob měsíc') + ' (' + pg.slozeni.replace(/\s*\([^)]*\)/g, '') + ', ' + pg.cena + ')';
         $('textarea[name="plan"]', form).value = hlavicka + ', začátek: ' + MESICE[parseInt(elStart.value, 10) || 0] + '\n' + radky.join('\n');
         $('.pole-plan', form).hidden = false;
         $$('input[data-plan]', form).forEach(function (i) { i.checked = i.getAttribute('data-plan') === String(rezim); });
